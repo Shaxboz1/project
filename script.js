@@ -105,7 +105,13 @@
       wifi_title: "Mijozlar uchun bepul Wi-Fi",
       contact_title: "Aloqa va buyurtma",
       hours_title: "Ish vaqti",
-      social_title: "Biz ijtimoiy tarmoqlarda"
+      social_title: "Biz ijtimoiy tarmoqlarda",
+      btn_enter_menu: "🍽️ Menyuga kirish",
+      welcome_sub: "marinade • Raqamli stol menyusi",
+      welcome_badge: "Stol QR-kodi",
+      welcome_qr_desc: "Telefoningiz kamerasi orqali skanerlang yoki to'g'ridan-to'g'ri menyuga kiring",
+      welcome_hint: "Olovda pishgan tansiq kaboblar va lazzatli taomlar",
+      qr_button: "QR Kod"
     },
     ru: {
       status_open: "Открыто • 10:00 - 23:00",
@@ -130,7 +136,13 @@
       wifi_title: "Бесплатный Wi-Fi для гостей",
       contact_title: "Контакты и заказ",
       hours_title: "Режим работы",
-      social_title: "Мы в соцсетях"
+      social_title: "Мы в соцсетях",
+      btn_enter_menu: "🍽️ Открыть меню",
+      welcome_sub: "marinade • Электронное меню на столах",
+      welcome_badge: "QR-код стола",
+      welcome_qr_desc: "Отсканируйте камерой смартфона или перейдите сразу в меню",
+      welcome_hint: "Изысканные шашлыки на углях и восточные блюда",
+      qr_button: "QR Код"
     },
     en: {
       status_open: "Open • 10:00 AM – 11:00 PM",
@@ -155,7 +167,13 @@
       wifi_title: "Free Guest Wi-Fi",
       contact_title: "Contact & Delivery",
       hours_title: "Working Hours",
-      social_title: "Follow Us"
+      social_title: "Follow Us",
+      btn_enter_menu: "🍽️ Enter Menu",
+      welcome_sub: "marinade • Digital Table Menu",
+      welcome_badge: "Table QR Code",
+      welcome_qr_desc: "Scan with your smartphone camera or enter the menu directly",
+      welcome_hint: "Charcoal-grilled authentic kebabs and delicacies",
+      qr_button: "QR Code"
     }
   };
 
@@ -279,6 +297,7 @@
     setupYear();
     applyRestaurantInfo();
     setupLanguageSwitcher();
+    setupWelcomeQRScreen();
     setupSearchAndFilters();
     setupBackToTop();
     setupModalEvents();
@@ -421,6 +440,74 @@
 
     if (elements.footerAddress && r.address) elements.footerAddress.textContent = t(r.address);
     if (elements.footerWorkingHours && r.working_hours) elements.footerWorkingHours.textContent = t(r.working_hours);
+
+    // Welcome QR Screen
+    const btnEnterText = document.getElementById('btn-enter-menu-text');
+    const welcomeSub = document.getElementById('welcome-sub-text');
+    const welcomeBadge = document.getElementById('welcome-badge-text');
+    const welcomeDesc = document.getElementById('welcome-qr-desc');
+    const welcomeHint = document.getElementById('welcome-hint-text');
+    const qrBtnText = document.querySelector('.btn-show-qr-text');
+
+    if (btnEnterText) btnEnterText.textContent = txt.btn_enter_menu;
+    if (welcomeSub) welcomeSub.textContent = txt.welcome_sub;
+    if (welcomeBadge) welcomeBadge.textContent = txt.welcome_badge;
+    if (welcomeDesc) welcomeDesc.textContent = txt.welcome_qr_desc;
+    if (welcomeHint) welcomeHint.textContent = txt.welcome_hint;
+    if (qrBtnText) qrBtnText.textContent = txt.qr_button;
+  }
+
+  /**
+   * Setup Welcome QR Code Screen (Entry Gate)
+   */
+  function setupWelcomeQRScreen() {
+    const screen = document.getElementById('welcome-qr-screen');
+    const btnEnter = document.getElementById('btn-enter-menu');
+    const btnClose = document.getElementById('btn-close-welcome-qr');
+    const btnShow = document.getElementById('btn-show-qr');
+
+    if (!screen) return;
+
+    // Direct hash (like #admin) bypasses welcome screen
+    if (window.location.hash && window.location.hash !== '#welcome' && window.location.hash !== '') {
+      screen.classList.add('is-hidden');
+    }
+
+    const hideWelcomeScreen = () => {
+      screen.classList.add('is-hidden');
+    };
+
+    const showWelcomeScreen = () => {
+      screen.classList.remove('is-hidden');
+    };
+
+    if (btnEnter) {
+      btnEnter.addEventListener('click', () => {
+        hideWelcomeScreen();
+        const hero = document.getElementById('hero');
+        if (hero) hero.scrollIntoView({ behavior: 'smooth' });
+      });
+    }
+
+    if (btnClose) {
+      btnClose.addEventListener('click', hideWelcomeScreen);
+    }
+
+    if (btnShow) {
+      btnShow.addEventListener('click', showWelcomeScreen);
+    }
+
+    screen.addEventListener('click', (e) => {
+      if (e.target === screen) {
+        hideWelcomeScreen();
+      }
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !screen.classList.contains('is-hidden')) {
+        hideWelcomeScreen();
+      }
+    });
   }
 
   /**

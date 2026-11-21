@@ -20,6 +20,54 @@
   <div class="ambient-glow ambient-glow-1" aria-hidden="true"></div>
   <div class="ambient-glow ambient-glow-2" aria-hidden="true"></div>
 
+  <!-- QR Code Welcome Gate (Menyuga kirishdan oldingi QR ekran) -->
+  <aside class="welcome-qr-screen" id="welcome-qr-screen" aria-label="Menyuga kirish">
+    <div class="welcome-qr-container">
+      <button type="button" class="welcome-close-btn" id="btn-close-welcome-qr" aria-label="Yopish">✕</button>
+
+      <div class="welcome-brand">
+        <div class="welcome-flame-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+          </svg>
+        </div>
+        <h2 class="welcome-title">KEBABO</h2>
+        <p class="welcome-sub" id="welcome-sub-text">marinade • Raqamli stol menyusi</p>
+      </div>
+
+      <div class="welcome-qr-card">
+        <div class="qr-glow-frame">
+          <img src="qr-code.svg" alt="KEBABO QR Menyu" class="welcome-qr-img" id="welcome-qr-img" width="210" height="210">
+        </div>
+        <div class="welcome-qr-badge">
+          <span class="pulse-dot"></span>
+          <span id="welcome-badge-text">Stol QR-kodi</span>
+        </div>
+        <p class="welcome-qr-text" id="welcome-qr-desc">
+          Telefoningiz kamerasi orqali skanerlang yoki to'g'ridan-to'g'ri menyuga kiring
+        </p>
+      </div>
+
+      <!-- Quick Wi-Fi Pill -->
+      <div class="welcome-wifi-pill">
+        <span>📶 Wi-Fi: <strong>KEBABO_GUEST</strong></span>
+        <span class="wifi-divider">•</span>
+        <span>Parol: <strong>kebabo2026</strong></span>
+      </div>
+
+      <!-- Enter Menu Button -->
+      <button type="button" class="btn-enter-menu" id="btn-enter-menu">
+        <span id="btn-enter-menu-text">🍽️ Menyuga kirish</span>
+        <svg class="enter-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </button>
+
+      <p class="welcome-hint" id="welcome-hint-text">Olovda pishgan tansiq kaboblar va lazzatli taomlar</p>
+    </div>
+  </aside>
+
   <!-- Header / Navigation -->
   <header class="site-header">
     <div class="header-inner container">
@@ -35,12 +83,25 @@
         </div>
       </div>
 
-      <!-- Language Selector -->
-      <nav class="lang-switcher" aria-label="Tilni tanlash / Language selector">
-        <button type="button" class="lang-btn active" data-lang="uz">UZ</button>
-        <button type="button" class="lang-btn" data-lang="ru">RU</button>
-        <button type="button" class="lang-btn" data-lang="en">EN</button>
-      </nav>
+      <div class="header-actions">
+        <!-- QR Code Button -->
+        <button type="button" class="btn-show-qr" id="btn-show-qr" aria-label="Stol QR kodi" title="Stol QR kodi">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+            <rect x="3" y="3" width="7" height="7"></rect>
+            <rect x="14" y="3" width="7" height="7"></rect>
+            <rect x="14" y="14" width="7" height="7"></rect>
+            <rect x="3" y="14" width="7" height="7"></rect>
+          </svg>
+          <span class="btn-show-qr-text">QR Kod</span>
+        </button>
+
+        <!-- Language Selector -->
+        <nav class="lang-switcher" aria-label="Tilni tanlash / Language selector">
+          <button type="button" class="lang-btn active" data-lang="uz">UZ</button>
+          <button type="button" class="lang-btn" data-lang="ru">RU</button>
+          <button type="button" class="lang-btn" data-lang="en">EN</button>
+        </nav>
+      </div>
     </div>
   </header>
 

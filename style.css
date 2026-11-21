@@ -1443,3 +1443,245 @@ body {
     box-shadow: none;
   }
 }
+
+/* ==========================================================================
+   14. Welcome QR Code Gate & Header Actions
+   ========================================================================== */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-show-qr {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.38rem 0.7rem;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-show-qr:hover {
+  background: rgba(255, 87, 34, 0.18);
+  border-color: var(--fire-orange);
+  color: #fff;
+}
+
+.welcome-qr-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  overflow-y: auto;
+  background: rgba(10, 10, 13, 0.94);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: opacity 0.35s ease, transform 0.35s ease, visibility 0.35s ease;
+}
+
+.welcome-qr-screen.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: scale(0.96) translateY(-16px);
+}
+
+.welcome-qr-container {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  background: linear-gradient(180deg, #181820 0%, #121217 100%);
+  border: 1px solid rgba(255, 87, 34, 0.35);
+  border-radius: var(--radius-xl);
+  padding: 1.85rem 1.4rem;
+  text-align: center;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 87, 34, 0.2);
+  animation: welcomePop 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes welcomePop {
+  0% { transform: scale(0.9) translateY(20px); opacity: 0; }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.welcome-close-btn {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.welcome-close-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  color: #fff;
+}
+
+.welcome-brand {
+  margin-bottom: 1.15rem;
+}
+
+.welcome-flame-icon {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto 0.55rem;
+  border-radius: 14px;
+  background: var(--grad-fire);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px var(--fire-glow);
+  color: #fff;
+}
+
+.welcome-flame-icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.welcome-title {
+  font-family: var(--font-heading);
+  font-size: 1.85rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #fff;
+  line-height: 1.1;
+  margin: 0;
+}
+
+.welcome-sub {
+  font-size: 0.84rem;
+  color: var(--fire-amber);
+  margin-top: 0.25rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.welcome-qr-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 1.15rem 1rem;
+  margin-bottom: 1.15rem;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
+}
+
+.qr-glow-frame {
+  display: inline-block;
+  line-height: 0;
+}
+
+.welcome-qr-img {
+  width: 200px;
+  height: 200px;
+  max-width: 100%;
+  display: block;
+  margin: 0 auto;
+}
+
+.welcome-qr-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(255, 87, 34, 0.1);
+  color: var(--fire-orange);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 0.3rem 0.75rem;
+  border-radius: var(--radius-pill);
+  margin-top: 0.65rem;
+}
+
+.welcome-qr-text {
+  font-size: 0.82rem;
+  color: #4b5563;
+  margin: 0.5rem 0 0;
+  line-height: 1.35;
+}
+
+.welcome-wifi-pill {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-size: 0.76rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  padding: 0.5rem 0.8rem;
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  margin-bottom: 1.15rem;
+}
+
+.welcome-wifi-pill strong {
+  color: var(--text-primary);
+}
+
+.wifi-divider {
+  color: var(--text-muted);
+}
+
+.btn-enter-menu {
+  width: 100%;
+  background: var(--grad-fire);
+  color: #ffffff;
+  border: none;
+  font-family: var(--font-heading);
+  font-size: 1.12rem;
+  font-weight: 700;
+  padding: 0.95rem 1.5rem;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  box-shadow: 0 8px 24px var(--fire-glow);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-enter-menu:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(255, 87, 34, 0.5);
+}
+
+.btn-enter-menu:active {
+  transform: translateY(1px);
+}
+
+.enter-arrow {
+  width: 20px;
+  height: 20px;
+  transition: transform 0.2s;
+}
+
+.btn-enter-menu:hover .enter-arrow {
+  transform: translateX(4px);
+}
+
+.welcome-hint {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin: 0.75rem 0 0;
+}
