@@ -12,7 +12,7 @@ window.__MENU_FALLBACK__ = {
       "ru": "KEBABO marinade — Отборное мясо, фирменный маринад и сочные шашлыки на живых углях.",
       "en": "KEBABO marinade — Prime cuts, signature marinades, and authentic charcoal-grilled kebabs."
     },
-    "menu_url": "https://kebabhouse.uz/menu",
+    "menu_url": "https://shaxboz1.github.io/project/",
     "phone": "+998 71 200 00 00",
     "phone_display": "+998 (71) 200-00-00",
     "address": {
