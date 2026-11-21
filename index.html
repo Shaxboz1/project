@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="theme-color" content="#121214">
+  <meta name="description" content="KEBABO marinade - Sarxil go'shtlar, maxsus marinadlar va tansiq kaboblar raqamli menyusi.">
+  <title>KEBABO | Raqamli Menyu</title>
+
+  <!-- Google Fonts: Outfit (Headings) & Plus Jakarta Sans (Body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/svg+xml" href="qr-code.svg">
+</head>
+<body>
+  <!-- Ember Glow Background Elements -->
+  <div class="ambient-glow ambient-glow-1" aria-hidden="true"></div>
+  <div class="ambient-glow ambient-glow-2" aria-hidden="true"></div>
+
+  <!-- Header / Navigation -->
+  <header class="site-header">
+    <div class="header-inner container">
+      <div class="brand-link" id="brand-secret-trigger" role="button" tabindex="0" aria-label="KEBABO">
+        <div class="brand-logo-icon" id="logo-flame-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name" id="nav-brand-name">KEBABO</span>
+          <span class="brand-sub">marinade</span>
+        </div>
+      </div>
+
+      <!-- Language Selector -->
+      <nav class="lang-switcher" aria-label="Tilni tanlash / Language selector">
+        <button type="button" class="lang-btn active" data-lang="uz">UZ</button>
+        <button type="button" class="lang-btn" data-lang="ru">RU</button>
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section" id="hero">
+    <div class="container hero-content">
+      <div class="hero-badge">
+        <span class="pulse-dot"></span>
+        <span id="hero-status">Ochiq &bull; 10:00 - 23:00</span>
+      </div>
+
+      <h1 class="hero-title">
+        <span id="hero-title-main">KEBABO</span>
+        <span class="hero-title-accent" id="hero-tagline">marinade</span>
+      </h1>
+
+      <p class="hero-desc" id="hero-desc">
+        Sarxil go'shtlar, maxsus marinadlar va haqiqiy cho'g'da pishirilgan tansiq kaboblar maskani.
+      </p>
+
+      <!-- Highlights row -->
+      <div class="hero-features">
+        <div class="feature-item">
+          <span class="feature-icon">🍢</span>
+          <span class="feature-text" id="feat-halal">100% Halol go'sht</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">🔥</span>
+          <span class="feature-text" id="feat-charcoal">Cho'g'da pishirilgan</span>
+        </div>
+        <div class="feature-item">
+          <span class="feature-icon">⚡</span>
+          <span class="feature-text" id="feat-speed">Tezkor xizmat</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sticky Categories Navigation -->
+  <nav class="category-nav-wrapper" id="sticky-nav" aria-label="Menyu bo'limlari">
+    <div class="container category-nav-container">
+      <div class="category-nav-list" id="category-tabs" role="tablist">
+        <!-- Injected via JavaScript from menu.json -->
+      </div>
+    </div>
+  </nav>
+
+  <!-- Search & Filter Controls -->
+  <section class="controls-section">
+    <div class="container">
+      <!-- Search Input -->
+      <div class="search-box">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <input 
+          type="search" 
+          id="menu-search" 
+          class="search-input" 
+          placeholder="Taom yoki ichimlik qidirish..." 
+          autocomplete="off"
+          aria-label="Taom qidirish"
+        >
+        <button type="button" id="search-clear" class="search-clear-btn" aria-label="Tozalash" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Quick Filter Chips -->
+      <div class="filter-chips" id="filter-chips" role="radiogroup" aria-label="Filtrlar">
+        <button type="button" class="chip active" data-filter="all" id="chip-all">Barchasi</button>
+        <button type="button" class="chip" data-filter="hit" id="chip-hit">⭐ Xit taomlar</button>
+        <button type="button" class="chip" data-filter="achchiq" id="chip-spicy">🔥 Achchiq</button>
+        <button type="button" class="chip" data-filter="yangi" id="chip-new">✨ Yangi</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Menu Sections -->
+  <main class="menu-container container" id="menu-sections">
+    <!-- Categories and Dishes dynamically rendered from menu.json -->
+    <div class="menu-loading" id="menu-loading">
+      <div class="spinner"></div>
+      <p>Menyu yuklanmoqda...</p>
+    </div>
+  </main>
+
+  <!-- Search Empty State -->
+  <div class="empty-state container" id="empty-state" hidden>
+    <div class="empty-icon">🔍</div>
+    <h3 id="empty-title">Kechirasiz, taom topilmadi</h3>
+    <p id="empty-desc">Iltimos, boshqa so'z bilan qidirib ko'ring yoki barcha taomlarni ko'ring.</p>
+    <button type="button" class="btn-reset-search" id="btn-reset-search">Barcha taomlarni ko'rish</button>
+  </div>
+
+  <!-- Detail Modal (Bottom Sheet on Mobile) -->
+  <div class="modal-backdrop" id="dish-modal" role="dialog" aria-modal="true" aria-hidden="true" hidden>
+    <div class="modal-card">
+      <button type="button" class="modal-close" id="modal-close-btn" aria-label="Yopish">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+
+      <div class="modal-image-wrapper">
+        <img src="" alt="" id="modal-image" class="modal-image" loading="lazy">
+        <div class="modal-badges" id="modal-badges"></div>
+      </div>
+
+      <div class="modal-body">
+        <div class="modal-header-row">
+          <h2 class="modal-title" id="modal-title"></h2>
+          <span class="modal-weight" id="modal-weight"></span>
+        </div>
+
+        <p class="modal-description" id="modal-description"></p>
+
+        <div class="modal-footer-row">
+          <div class="modal-price-box">
+            <span class="modal-price-label" id="modal-price-label">Narxi:</span>
+            <span class="modal-price-val" id="modal-price"></span>
+          </div>
+          <button type="button" class="modal-action-btn" id="modal-close-action">Yopish</button>
+        </div>
+
+        <div class="modal-order-hint">
+          <span class="hint-icon">💡</span>
+          <span id="modal-order-tip">Buyurtma berish uchun stolingizga ofitsiantni taklif qiling.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- Floating Back to Top Button -->
+  <button type="button" class="back-to-top" id="back-to-top" aria-label="Yuqoriga qaytish" hidden>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="18 15 12 9 6 15"></polyline>
+    </svg>
+    <span class="btt-text" id="btt-label">Yuqoriga</span>
+  </button>
+
+  <!-- Footer Section -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <!-- Wi-Fi Card -->
+      <div class="wifi-card">
+        <div class="wifi-header">
+          <div class="wifi-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+              <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+              <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+              <line x1="12" y1="20" x2="12.01" y2="20"></line>
+            </svg>
+          </div>
+          <div>
+            <h3 class="wifi-title" id="wifi-card-title">Mijozlar uchun bepul Wi-Fi</h3>
+            <p class="wifi-sub" id="wifi-card-sub">Nusxalash uchun bosing</p>
+          </div>
+        </div>
+        <div class="wifi-details">
+          <div class="wifi-item">
+            <span class="wifi-label">Tarmoq / SSID:</span>
+            <strong class="wifi-val" id="wifi-ssid">KebabHouse_Guest</strong>
+          </div>
+          <div class="wifi-item">
+            <span class="wifi-label">Parol:</span>
+            <button type="button" class="copy-wifi-btn" id="copy-wifi-btn" title="Parolni nusxalash">
+              <span id="wifi-password">kebabhouse2026</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="copy-icon">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Restaurant Info Grid -->
+      <div class="footer-grid">
+        <!-- Column 1: Info -->
+        <div class="footer-col">
+          <h3 class="footer-col-title" id="footer-contact-title">Aloqa va buyurtma</h3>
+          <ul class="footer-list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="f-icon">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+              </svg>
+              <a href="tel:+998712000000" id="footer-phone" class="footer-link">+998 (71) 200-00-00</a>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="f-icon">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                <circle cx="12" cy="10" r="3"></circle>
+              </svg>
+              <span id="footer-address">Toshkent sh., Amir Temur shox ko'chasi, 45-uy</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Column 2: Hours -->
+        <div class="footer-col">
+          <h3 class="footer-col-title" id="footer-hours-title">Ish vaqti</h3>
+          <p class="footer-hours">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="f-icon">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span id="footer-working-hours">Har kuni: 10:00 - 23:00</span>
+          </p>
+          <div class="footer-qr-link-box">
+            <a href="qr-print.html" class="qr-print-pill" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="f-icon">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
+              <span>Stol uchun QR kod sahifasi (Print) &rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Column 3: Social -->
+        <div class="footer-col">
+          <h3 class="footer-col-title" id="footer-social-title">Biz ijtimoiy tarmoqlarda</h3>
+          <div class="social-links">
+            <a href="https://instagram.com/kebabo_uz" class="social-btn instagram" id="link-instagram" target="_blank" rel="noopener" aria-label="Instagram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+              </svg>
+              <span id="instagram-handle">@kebabo_uz</span>
+            </a>
+            <a href="https://t.me/kebabo_bot" class="social-btn telegram" id="link-telegram" target="_blank" rel="noopener" aria-label="Telegram">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="22" y1="2" x2="11" y2="13"></line>
+                <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+              </svg>
+              <span id="telegram-handle">@kebabo_bot</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <p>&copy; <span id="current-year">2026</span> <strong id="footer-brand-name">KEBABO</strong>. Barcha huquqlar himoyalangan.</p>
+        <p class="footer-made" id="footer-secret-trigger">Mobile-first QR Menyu tizimi</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="menu-data.js"></script>
+  <script type="module" src="script.js"></script>
+</body>
+</html>

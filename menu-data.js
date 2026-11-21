@@ -1,0 +1,798 @@
+window.__MENU_FALLBACK__ = {
+  "restaurant": {
+    "name": "KEBABO",
+    "brand_tagline": "marinade",
+    "tagline": {
+      "uz": "marinade • Olovda pishgan haqiqiy ta'm",
+      "ru": "marinade • Настоящий вкус, приготовленный на живом огне",
+      "en": "marinade • Authentic taste grilled over live charcoal"
+    },
+    "description": {
+      "uz": "KEBABO marinade — Sarxil go'shtlar, maxsus marinadlar va haqiqiy cho'g'da pishirilgan tansiq kaboblar maskani.",
+      "ru": "KEBABO marinade — Отборное мясо, фирменный маринад и сочные шашлыки на живых углях.",
+      "en": "KEBABO marinade — Prime cuts, signature marinades, and authentic charcoal-grilled kebabs."
+    },
+    "menu_url": "https://kebabhouse.uz/menu",
+    "phone": "+998 71 200 00 00",
+    "phone_display": "+998 (71) 200-00-00",
+    "address": {
+      "uz": "Toshkent shahri",
+      "ru": "город Ташкент",
+      "en": "Tashkent city, Uzbekistan"
+    },
+    "working_hours": {
+      "uz": "Har kuni: 10:00 - 23:00",
+      "ru": "Ежедневно: 10:00 - 23:00",
+      "en": "Daily: 10:00 AM - 11:00 PM"
+    },
+    "wifi": {
+      "ssid": "KEBABO_Guest",
+      "password": "kebabo2026"
+    },
+    "social": {
+      "instagram": {
+        "handle": "@kebabo_uz",
+        "url": "https://instagram.com/kebabo_uz"
+      },
+      "telegram": {
+        "handle": "@kebabo_bot",
+        "url": "https://t.me/kebabo_bot"
+      }
+    },
+    "currency": {
+      "uz": "so'm",
+      "ru": "сум",
+      "en": "UZS"
+    }
+  },
+  "translations": {
+    "search_placeholder": {
+      "uz": "Taom yoki ichimlik qidirish (nomi yoki № raqami)...",
+      "ru": "Поиск блюд (название или №)...",
+      "en": "Search dishes or drinks (name or №)..."
+    },
+    "filter_all": {
+      "uz": "Barchasi",
+      "ru": "Все",
+      "en": "All"
+    },
+    "filter_hit": {
+      "uz": "⭐ Xit taomlar",
+      "ru": "⭐ Хиты",
+      "en": "⭐ Best Sellers"
+    },
+    "filter_spicy": {
+      "uz": "🔥 Achchiq",
+      "ru": "🔥 Острое",
+      "en": "🔥 Spicy"
+    },
+    "filter_new": {
+      "uz": "✨ Yangi",
+      "ru": "✨ Новинки",
+      "en": "✨ New"
+    },
+    "back_to_top": {
+      "uz": "Yuqoriga",
+      "ru": "Наверх",
+      "en": "Top"
+    },
+    "close": {
+      "uz": "Yopish",
+      "ru": "Закрыть",
+      "en": "Close"
+    },
+    "price": {
+      "uz": "Narxi",
+      "ru": "Цена",
+      "en": "Price"
+    },
+    "wifi_title": {
+      "uz": "Mijozlar uchun bepul Wi-Fi",
+      "ru": "Бесплатный Wi-Fi для гостей",
+      "en": "Free Guest Wi-Fi"
+    },
+    "wifi_copied": {
+      "uz": "Wi-Fi paroli nusxalandi!",
+      "ru": "Пароль Wi-Fi скопирован!",
+      "en": "Wi-Fi password copied!"
+    },
+    "click_to_copy": {
+      "uz": "Nusxalash uchun bosing",
+      "ru": "Нажмите, чтобы скопировать",
+      "en": "Click to copy"
+    },
+    "hours_title": {
+      "uz": "Ish vaqti",
+      "ru": "Режим работы",
+      "en": "Working Hours"
+    },
+    "address_title": {
+      "uz": "Manzil",
+      "ru": "Адрес",
+      "en": "Address"
+    },
+    "contact_title": {
+      "uz": "Aloqa va buyurtma",
+      "ru": "Контакты и заказ",
+      "en": "Contact & Delivery"
+    },
+    "social_title": {
+      "uz": "Biz ijtimoiy tarmoqlarda",
+      "ru": "Мы в соцсетях",
+      "en": "Follow Us"
+    },
+    "empty_search": {
+      "uz": "Kechirasiz, siz qidirgan nom bo'yicha taom topilmadi.",
+      "ru": "К сожалению, по вашему запросу ничего не найдено.",
+      "en": "Sorry, no dishes found matching your search."
+    },
+    "clear_search": {
+      "uz": "Qidiruvni tozalash",
+      "ru": "Сбросить поиск",
+      "en": "Clear search"
+    }
+  },
+  "categories": [
+    {
+      "id": "kebablar",
+      "name": {
+        "uz": "Kebablar (Kaboblar)",
+        "ru": "Шашлыки",
+        "en": "Kebabs"
+      },
+      "icon": "🍢",
+      "subtitle": {
+        "uz": "KEBABO maxsus marinadida cho'g'da pishirilgan tansiq kaboblar",
+        "ru": "Фирменные шашлыки в особом маринаде на живых углях",
+        "en": "Charcoal grilled skewers in KEBABO signature marinade"
+      },
+      "items": [
+        {
+          "id": "11-dubayski-qiyma",
+          "item_num": "№ 11",
+          "name": {
+            "uz": "№ 11 Dubayski qiyma",
+            "ru": "№ 11 Дубайский люля-кебаб",
+            "en": "№ 11 Dubai Style Kebab"
+          },
+          "description": {
+            "uz": "Dubay uslubidagi sersuv va nozik qiyma kabob, maxsus marinad va xushbo'y sharq ziravorlari bilan.",
+            "ru": "Фирменный сочный люля-кебаб по-дубайски с восточными специями.",
+            "en": "Juicy Dubai-style minced kebab seasoned with aromatic oriental spices."
+          },
+          "price": 18000,
+          "weight": "1 dona",
+          "badge": "hit",
+          "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          "id": "12-obichniy-qiyma",
+          "item_num": "№ 12",
+          "name": {
+            "uz": "№ 12 Obichniy qiyma",
+            "ru": "№ 12 Обычный люля-кебаб",
+            "en": "№ 12 Classic Minced Kebab"
+          },
+          "description": {
+            "uz": "Klassik an'anaviy qiyma shashlik, yangi sarxil go'sht, zira va piyoz uyg'unligi.",
+            "ru": "Классический традиционный рубленый шашлык из свежего мяса с зирой.",
+            "en": "Classic traditional ground meat kebab seasoned with mountain cumin."
+          },
+          "price": 15000,
+          "weight": "1 dona",
+          "badge": null,
+          "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          "id": "14-gijdivon",
+          "item_num": "№ 14",
+          "name": {
+            "uz": "№ 14 G`ijdivon",
+            "ru": "№ 14 Гиждуванский шашлык",
+            "en": "№ 14 Gijduvan Kebab"
+          },
+          "description": {
+            "uz": "Mashhur G'ijduvon uslubidagi sersuv va mayin qiyma kabob, olovda maromiga yetkazib pishirilgan.",
+            "ru": "Знаменитый гиждуванский сочный шашлык с пикантным ароматом дымка.",
+            "en": "Famous Gijduvan-style succulent kebab grilled over glowing coals."
+          },
+          "price": 18000,
+          "weight": "1 dona",
+          "badge": "hit",
+          "image": "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          "id": "15-qiyma-mozrarella",
+          "item_num": "№ 15",
+          "name": {
+            "uz": "№ 15 Qiyma Mozrarella",
+            "ru": "№ 15 Люля с сыром Моцарелла",
+            "en": "№ 15 Mozzarella Stuffed Kebab"
+          },
+          "description": {
+            "uz": "Sersuv qiyma go'shti ichiga eruvchan mazali motsarella pishlog'i joylangan tansiq kabob.",
+            "ru": "Аппетитный люля-кебаб с начинкой из нежного расплавленного сыра моцарелла.",
+            "en": "Succulent minced beef kebab stuffed with rich melted mozzarella cheese."
+          },
+          "price": 22000,
+          "weight": "1 dona",
+          "badge": "hit",
+          "image": "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          "id": "22-avashnoy-qiyma",
+          "item_num": "№ 22",
+          "name": {
+            "uz": "№ 22 Avashnoy qiyma",
+            "ru": "№ 22 Овощной люля-кебаб",
+            "en": "№ 22 Vegetable Beef Kebab"
+          },
+          "description": {
+            "uz": "Sarxil go'sht va mayda to'g'ralgan sabzavotlar (shirin bulg'or qalampiri, ko'katlar) aralashmasidan qiyma.",
+            "ru": "Сочный кебаб с добавлением сладкого болгарского перца и свежей зелени.",
+            "en": "Juicy minced kebab blended with sweet bell peppers and garden herbs."
+          },
+          "price": 18000,
+          "weight": "1 dona",
+          "badge": null,
+          "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          "id": "23-achchiq-qiyma",
+          "item_num": "№ 23",
+          "name": {
+            "uz": "№ 23 Achchiq qiyma",
+            "ru": "№ 23 Острый люля-кебаб",
+            "en": "№ 23 Spicy Chili Kebab"
+          },
+          "description": {
+            "uz": "Achchiq qalampir va o'tkir sharq ziravorlari bilan cho'g'da pishirilgan olovli qiyma kabob.",
+            "ru": "Острый рубленый кебаб с жгучим перцем для любителей пикантного вкуса.",
+            "en": "Fiery minced kebab seasoned with crushed chili and hot spices."
+          },
+          "price": 18000,
+          "weight": "1 dona",
+          "badge": "achchiq",
+          "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          "id": "25-zakaz-qiyma",
+          "item_num": "№ 25",
+          "name": {
+            "uz": "№ 25 Zakaz qiyma",
+            "ru": "№ 25 Заказной люля-кебаб",
+            "en": "№ 25 Special Order Kebab"
+          },
+          "description": {
+            "uz": "Maxsus saralangan lahm go'shtdan buyurtma asosida tayyorlanadigan oliy toifali qiyma.",
+            "ru": "Отборный заказной люля-кебаб из свежайшего мяса высшего сорта.",
+            "en": "Custom prime-cut minced kebab prepared on special order."
+          },
+          "price": 20000,
+          "weight": "1 dona",
+          "badge": "yangi",
+          "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          "id": "16-tabaki-qanot",
+          "item_num": "№ 16",
+          "name": {
+            "uz": "№ 16 Tabaki qanot",
+            "ru": "№ 16 Крылышки табака",
+            "en": "№ 16 Tabaka Wings"
+          },
+          "description": {
+            "uz": "Xushbo'y qizil marinadda marinadlangan va qarsildoq qilib cho'g'da pishirilgan tovuq qanotlari.",
+            "ru": "Куриные крылышки табака на углях с золотистой хрустящей корочкой.",
+            "en": "Crispy chicken wings marinated in paprika and garlic herbs."
+          },
+          "price": 16000,
+          "weight": "1 six",
+          "badge": null,
+          "image": "https://images.unsplash.com/photo-1527477378378-43f11d1ec9c0?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          "id": "16-tabaki-son-qismi",
+          "item_num": "№ 16",
+          "name": {
+            "uz": "№ 16 Tabaki son qismi",
+            "ru": "№ 16 Бедрышки табака",
+            "en": "№ 16 Tabaka Thighs"
+          },
+          "description": {
+            "uz": "Sersuv tovuq son go'shti, maxsus sarimsoqli sousda marinadlangan va olovda pishirilgan.",
+            "ru": "Сочные куриные бедрышки табака с чесночно-пряным ароматом.",
+            "en": "Juicy chicken thigh cuts grilled in spicy garlic marinade."
+          },
+          "price": 16000,
+          "weight": "1 six",
+          "badge": null,
+          "image": "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          "id": "17-torgamchi-yogsiz",
+          "item_num": "№ 17",
+          "name": {
+            "uz": "№ 17 To`rg`amchi yog`siz",
+            "ru": "№ 17 Торгаргамчи без жира",
+            "en": "№ 17 Lean Beef Torgamchi"
+          },
+          "description": {
+            "uz": "Yog'siz sarxil lahm mol go'shti bo'laklaridan tayyorlangan xushbo'y to'rg'amchi shashlik.",
+            "ru": "Постный шашлык торгамчи из сочного говяжьего филе без жира.",
+            "en": "Lean prime beef pieces marinated and grilled over coals."
+          },
+          "price": 24000,
+          "weight": "1 six",
+          "badge": null,
+          "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          "id": "19-torgamchi-yogli",
+          "item_num": "№ 19",
+          "name": {
+            "uz": "№ 19 To`rg`amchi yo`g`li",
+            "ru": "№ 19 Торгаргамчи с жирком",
+            "en": "№ 19 Juicy Fat-Laced Torgamchi"
+          },
+          "description": {
+            "uz": "Lahm go'sht va tillarang qarsildoq dumba bo'laklari galma-gal terilgan sersuv shashlik.",
+            "ru": "Сочный шашлык торгамчи с нежными прослойками тающего жирка.",
+            "en": "Juicy meat skewer alternating prime beef and golden tail fat."
+          },
+          "price": 22000,
+          "weight": "1 six",
+          "badge": null,
+          "image": "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          "id": "18-kavkaz-mol-goshti",
+          "item_num": "№ 18",
+          "name": {
+            "uz": "№ 18 Kavkaz (mol go'shti)",
+            "ru": "№ 18 Кавказский (говядина)",
+            "en": "№ 18 Caucasian Beef Kebab"
+          },
+          "description": {
+            "uz": "Kavkazcha uslubda yirik to'g'ralgan va tog' ziravorlarida marinadlangan sarxil mol go'shti.",
+            "ru": "Кавказский шашлык из крупных сочных кусков говядины с пряными травами.",
+            "en": "Caucasian-style large tender beef chunks with mountain herbs."
+          },
+          "price": 30000,
+          "weight": "1 six",
+          "badge": "hit",
+          "image": "https://images.unsplash.com/photo-1603360946369-dc9bb6258143?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          "id": "36-kavkaz-qoy-goshti",
+          "item_num": "№ 36",
+          "name": {
+            "uz": "№ 36 Kavkaz (qo'y go'shti)",
+            "ru": "№ 36 Кавказский (баранина)",
+            "en": "№ 36 Caucasian Lamb Kebab"
+          },
+          "description": {
+            "uz": "Yosh qo'zichoq lahm go'shti, an'anaviy Kavkaz uslubidagi maxsus marinadda pishirilgan.",
+            "ru": "Нежнейшая баранина в кавказском маринаде, обжаренная на живых углях.",
+            "en": "Tender young lamb chunks grilled in Caucasian marinade."
+          },
+          "price": 33000,
+          "weight": "1 six",
+          "badge": "hit",
+          "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          "id": "21-kavkaz-tabaki",
+          "item_num": "№ 21",
+          "name": {
+            "uz": "№ 21 Kavkaz tabaki",
+            "ru": "№ 21 Кавказский цыпленок табака",
+            "en": "№ 21 Caucasian Tabaka Chicken"
+          },
+          "description": {
+            "uz": "Kavkazcha ziravorlar va sarimsoqli xushbo'y marinadda pishirilgan tovuq tabaki.",
+            "ru": "Цыпленок табака по-кавказски с чесноком, кинзой и ароматными специями.",
+            "en": "Caucasian-style whole flattened chicken tabaka with herbs."
+          },
+          "price": 24000,
+          "weight": "1 porsiya",
+          "badge": null,
+          "image": "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          "id": "20-marvarid",
+          "item_num": "№ 20",
+          "name": {
+            "uz": "№ 20 Marvarid",
+            "ru": "№ 20 Шашлык 'Марварид'",
+            "en": "№ 20 Marvarid Pearl Kebab"
+          },
+          "description": {
+            "uz": "Nozik lahm go'sht va dumba bo'laklari marvariddek terilgan tansiq va mayin kabob.",
+            "ru": "Изысканный шашлык 'Марварид' из нежнейших кусочков мяса.",
+            "en": "Signature pearl-cut tender meat skewers grilled over coals."
+          },
+          "price": 22000,
+          "weight": "1 six",
+          "badge": "hit",
+          "image": "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          "id": "napalyon",
+          "item_num": "№",
+          "name": {
+            "uz": "№ Napalyon",
+            "ru": "№ Наполеон (слоеный)",
+            "en": "№ Napoleon Layered Kebab"
+          },
+          "description": {
+            "uz": "Go'sht va dumba qavatma-qavat Napoleon uslubida terilgan shohona tansiq kabob.",
+            "ru": "Слоеный фирменный шашлык 'Наполеон' с тончайшими прослойками сочного мяса.",
+            "en": "Grand 'Napoleon' skewer layered with alternating tender meat cuts."
+          },
+          "price": 23000,
+          "weight": "1 six",
+          "badge": "hit",
+          "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          "id": "26-orama-shashlik",
+          "item_num": "№ 26",
+          "name": {
+            "uz": "№ 26 O'rama shashlik",
+            "ru": "№ 26 Шашлык 'Урама'",
+            "en": "№ 26 Orama Rolled Kebab"
+          },
+          "description": {
+            "uz": "Yupqa dumba pardasiga o'ralgan sersuv lahm go'sht bo'laklari, o'ta mayin va mazali.",
+            "ru": "Сочный шашлык 'Урама', завернутый в тонкую жировую сетку.",
+            "en": "Rolled prime meat wrapped in delicate caul fat mesh."
+          },
+          "price": 22000,
+          "weight": "1 six",
+          "badge": null,
+          "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          "id": "27-tovuq-fille",
+          "item_num": "№ 27",
+          "name": {
+            "uz": "№ 27 Tovuq fille",
+            "ru": "№ 27 Куриное филе на шпажке",
+            "en": "№ 27 Chicken Fillet Skewer"
+          },
+          "description": {
+            "uz": "Yumshoq tovuq ko'krak filesi, mayin oq marinadda cho'g'da tillarang qilib pishirilgan.",
+            "ru": "Нежнейшее куриное филе в маринаде, обжаренное до золотистой корочки.",
+            "en": "Tender chicken breast fillet skewer char-grilled to golden perfection."
+          },
+          "price": 14000,
+          "weight": "1 six",
+          "badge": null,
+          "image": "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          "id": "28-lavash-rulet",
+          "item_num": "№ 28",
+          "name": {
+            "uz": "№ 28 Lavash rulet",
+            "ru": "№ 28 Рулет в лаваше на углях",
+            "en": "№ 28 Grilled Lavash Roll"
+          },
+          "description": {
+            "uz": "Yupqa qarsildoq lavashga o'ralgan va cho'g'da qizartirib pishirilgan maxsus qiyma kabob.",
+            "ru": "Хрустящий рулет из лаваша с сочным фаршем со специями, обжаренный на гриле.",
+            "en": "Crispy thin lavash roll filled with seasoned meat and grilled over embers."
+          },
+          "price": 23000,
+          "weight": "1 dona",
+          "badge": "hit",
+          "image": "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          "id": "29-dollar",
+          "item_num": "№ 29",
+          "name": {
+            "uz": "№ 29 Dollar",
+            "ru": "№ 29 Шашлык 'Доллар'",
+            "en": "№ 29 'Dollar' Prime Kebab"
+          },
+          "description": {
+            "uz": "Katta va sersuv lahm bo'laklaridan iborat restoran xiti bo'lgan mashhur 'Dollar' shashlik.",
+            "ru": "Крупные сочные куски отборного мяса, фирменный хит шашлык 'Доллар'.",
+            "en": "Famous 'Dollar' kebab with thick juicy cuts of select tenderloin."
+          },
+          "price": 35000,
+          "weight": "1 six",
+          "badge": "hit",
+          "image": "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          "id": "30-jigar",
+          "item_num": "№ 30",
+          "name": {
+            "uz": "№ 30 Jigar",
+            "ru": "№ 30 Шашлык из печени",
+            "en": "№ 30 Beef Liver Kebab"
+          },
+          "description": {
+            "uz": "Yumshoq va sersuv yangi mol jigari shashlik, mayin yog' va xushbo'y zira ifori bilan.",
+            "ru": "Нежный шашлык из свежей говяжьей печени с ароматной зирой.",
+            "en": "Tender fresh beef liver chunks seasoned with ground coriander and cumin."
+          },
+          "price": 18000,
+          "weight": "1 six",
+          "badge": null,
+          "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          "id": "31-non-kabob-qiyma",
+          "item_num": "№ 31",
+          "name": {
+            "uz": "№ 31 Non kabob qiyma",
+            "ru": "№ 31 Нон-кабоб (люля в лепешке)",
+            "en": "№ 31 Non-Kabob Minced"
+          },
+          "description": {
+            "uz": "Issiq tandir noni ichida qovurilgan tansiq qiyma kabob, marinadlangan piyoz va sous.",
+            "ru": "Традиционный нон-кабоб: сочный кебаб в хрустящей лепешке с лучком.",
+            "en": "Warm tandoor bread packed with juicy grilled minced kebab and spiced onion."
+          },
+          "price": 12000,
+          "weight": "1 dona",
+          "badge": null,
+          "image": "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          "id": "32-biqin-qoy-kachalka",
+          "item_num": "№ 32",
+          "name": {
+            "uz": "№ 32 Biqin qo`y (kachalka)",
+            "ru": "№ 32 Бараний бок (качалка)",
+            "en": "№ 32 Lamb Flank 'Kachalka'"
+          },
+          "description": {
+            "uz": "Qo'zichoq biqin qismi go'shtidan tayyorlangan mayin va lazzatli 'kachalka' shashlik.",
+            "ru": "Шашлык из отборной реберной части ягненка (качалка), тает во рту.",
+            "en": "Special lamb flank skewer ('kachalka') grilled juicy and crisp."
+          },
+          "price": 28000,
+          "weight": "1 six",
+          "badge": null,
+          "image": "https://images.unsplash.com/photo-1603360946369-dc9bb6258143?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          "id": "33-qovurga-qoy-goshti",
+          "item_num": "№ 33",
+          "name": {
+            "uz": "№ 33 Qovurg`a (qo'y go'shti)",
+            "ru": "№ 33 Бараньи ребрышки на углях",
+            "en": "№ 33 Lamb Ribs on Charcoal"
+          },
+          "description": {
+            "uz": "Yosh qo'zichoq qovurg'asi, cho'g'da qarsildoq va sersuv qilib pishirilgan tansiq taom.",
+            "ru": "Хрустящие бараньи ребрышки на живых углях с ароматом дымка.",
+            "en": "Tender young lamb ribs charred crisp outside and succulent inside."
+          },
+          "price": 25000,
+          "weight": "1 six",
+          "badge": null,
+          "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          "id": "34-torgamchi-yogl",
+          "item_num": "№ 34",
+          "name": {
+            "uz": "№ 34 To'rg'amchi yog`l",
+            "ru": "№ 34 Торгаргамчи с жирком (№ 34)",
+            "en": "№ 34 Fat-Marbled Torgamchi"
+          },
+          "description": {
+            "uz": "To'g'ralgan sersuv lahm go'sht va tillarang dumba bo'laklarining o'zgacha uyg'unligi.",
+            "ru": "Фирменный сочный шашлык торгамчи с тающим курдючным жирком.",
+            "en": "Torgamchi cuts interleaved with rich golden tail fat."
+          },
+          "price": 25000,
+          "weight": "1 six",
+          "badge": null,
+          "image": "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          "id": "35-qoy-goshti-qiyma",
+          "item_num": "№ 35",
+          "name": {
+            "uz": "№ 35 Qo'y go'shti qiyma",
+            "ru": "№ 35 Люля-кебаб из баранины",
+            "en": "№ 35 Minced Lamb Kebab"
+          },
+          "description": {
+            "uz": "Tanlangan yosh qo'y go'shti qiymasi, xushbo'y zira va shirin piyoz bilan cho'g'da pishirilgan.",
+            "ru": "Настоящий восточный люля-кебаб из отборной баранины с зирой.",
+            "en": "Authentic minced lamb kebab grilled over coals with spices."
+          },
+          "price": 22000,
+          "weight": "1 dona",
+          "badge": "hit",
+          "image": "https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          "id": "1-dumba",
+          "item_num": "№ 1",
+          "name": {
+            "uz": "№ 1 Dumba",
+            "ru": "№ 1 Шашлык из курдюка",
+            "en": "№ 1 Lamb Tail Fat Kebab"
+          },
+          "description": {
+            "uz": "Cho'g'da qarsildoq va tillarang qilib pishirilgan xushbo'y dumba shashlik.",
+            "ru": "Хрустящий золотистый шашлык из курдюка на углях со специями.",
+            "en": "Crisp and golden skewers of prime lamb tail fat."
+          },
+          "price": 16000,
+          "weight": "1 six",
+          "badge": null,
+          "image": "https://images.unsplash.com/photo-1529692236671-f1f6cf9683ba?auto=format&fit=crop&w=700&q=80"
+        }
+      ]
+    },
+    {
+      "id": "non",
+      "name": {
+        "uz": "Non",
+        "ru": "Лепешки",
+        "en": "Breads"
+      },
+      "icon": "🥖",
+      "subtitle": {
+        "uz": "Tandirdan uzilgan issiq va xushbo'y nonlar",
+        "ru": "Горячие лепешки прямо из тандыра",
+        "en": "Fresh hot tandoor baked bread"
+      },
+      "items": [
+        {
+          "id": "non-yarimta",
+          "item_num": "NON",
+          "name": {
+            "uz": "Non (yarimta)",
+            "ru": "Лепешка (половина)",
+            "en": "Tandoor Bread (Half)"
+          },
+          "description": {
+            "uz": "Yangi tandirdan uzilgan issiq non (yarimta).",
+            "ru": "Свежая горячая тандырная лепешка (половинка).",
+            "en": "Warm traditional tandoor flatbread (half portion)."
+          },
+          "price": 3000,
+          "weight": "yarimta",
+          "badge": null,
+          "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          "id": "non-butun",
+          "item_num": "NON",
+          "name": {
+            "uz": "Non (butun)",
+            "ru": "Лепешка (целая)",
+            "en": "Tandoor Bread (Whole)"
+          },
+          "description": {
+            "uz": "Yangi yopilgan issiq qarsildoq tandir noni (butun).",
+            "ru": "Свежеиспеченная ароматная тандырная лепешка (целая).",
+            "en": "Whole round traditional tandoor flatbread, hot from oven."
+          },
+          "price": 5000,
+          "weight": "1 dona",
+          "badge": null,
+          "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=700&q=80"
+        }
+      ]
+    },
+    {
+      "id": "ichimliklar",
+      "name": {
+        "uz": "Choy va Ichimliklar",
+        "ru": "Чай и напитки",
+        "en": "Tea & Drinks"
+      },
+      "icon": "🫖",
+      "subtitle": {
+        "uz": "Issiq choylar va salqinlantiruvchi yaxna ichimliklar",
+        "ru": "Ароматные традиционные чаи и прохладительные напитки",
+        "en": "Hot traditional teas and refreshing cold beverages"
+      },
+      "items": [
+        {
+          "id": "kok-choy",
+          "item_num": "CHOY",
+          "name": {
+            "uz": "Ko'k choy",
+            "ru": "Зеленый чай (чайник)",
+            "en": "Green Tea (Teapot)"
+          },
+          "description": {
+            "uz": "An'anaviy ko'k choy choynakda, limon va novvot bilan.",
+            "ru": "Традиционный узбекский зеленый чай №95 в чайнике.",
+            "en": "Traditional green tea served hot in an authentic ceramic teapot."
+          },
+          "price": 3000,
+          "weight": "1 choynak",
+          "badge": "hit",
+          "image": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          "id": "qora-choy",
+          "item_num": "CHOY",
+          "name": {
+            "uz": "Qora choy",
+            "ru": "Черный чай (чайник)",
+            "en": "Black Tea (Teapot)"
+          },
+          "description": {
+            "uz": "Xushbo'y qora choy choynakda, yangi damlangan.",
+            "ru": "Ароматный крепкий черный чай в чайнике.",
+            "en": "Freshly brewed fragrant black tea in teapot."
+          },
+          "price": 3000,
+          "weight": "1 choynak",
+          "badge": null,
+          "image": "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          "id": "suv",
+          "item_num": "SUV",
+          "name": {
+            "uz": "Suv (gazsiz / gazli)",
+            "ru": "Минеральная вода",
+            "en": "Mineral Water"
+          },
+          "description": {
+            "uz": "Toza muzdek mineral suv.",
+            "ru": "Чистая природная минеральная вода, с газом или без.",
+            "en": "Pure mountain mineral water, chilled or room temperature."
+          },
+          "price": 5000,
+          "weight": "0.5 l",
+          "badge": null,
+          "image": "https://images.unsplash.com/photo-1548839140-29a749e1bc4e?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          "id": "coca-cola",
+          "item_num": "SODA",
+          "name": {
+            "uz": "Coca-Cola / Fanta / Sprite",
+            "ru": "Coca-Cola / Fanta / Sprite",
+            "en": "Coca-Cola / Fanta / Sprite"
+          },
+          "description": {
+            "uz": "Muzdek salqinlantiruvchi gazlangan ichimliklar.",
+            "ru": "Классические освежающие газированные напитки со льдом.",
+            "en": "Chilled sparkling sodas served with lemon."
+          },
+          "price": 12000,
+          "weight": "0.5 l",
+          "badge": null,
+          "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&w=700&q=80"
+        },
+        {
+          "id": "limonad",
+          "item_num": "SOK",
+          "name": {
+            "uz": "Limonad (uy uslubida)",
+            "ru": "Домашний лимонад",
+            "en": "Homemade Lemonade"
+          },
+          "description": {
+            "uz": "Yalpiz, laym va limon bilan tayyorlangan yaxna limonad.",
+            "ru": "Освежающий авторский лимонад с мятой и лаймом.",
+            "en": "Refreshing craft lemonade with mint and lime."
+          },
+          "price": 18000,
+          "weight": "0.5 l",
+          "badge": "hit",
+          "image": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=700&q=80"
+        }
+      ]
+    }
+  ]
+}
+;

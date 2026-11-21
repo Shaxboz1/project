@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="theme-color" content="#121215">
+  <title>KEBABO | Boshqaruv Paneli</title>
+
+  <!-- Google Fonts: Outfit & Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="admin.css">
+  <link rel="icon" type="image/svg+xml" href="../qr-code.svg">
+</head>
+<body class="dashboard-page">
+
+  <!-- Ambient Glow Effects -->
+  <div class="ambient-glow ambient-glow-1" aria-hidden="true"></div>
+  <div class="ambient-glow ambient-glow-2" aria-hidden="true"></div>
+
+  <!-- App Wrapper -->
+  <div class="app-layout">
+    
+    <!-- Sidebar Navigation (Desktop / Tablet) -->
+    <aside class="app-sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="dashboard.html" class="sidebar-brand">
+          <div class="brand-logo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+            </svg>
+          </div>
+          <div class="brand-info">
+            <span class="brand-title">KEBABO</span>
+            <span class="brand-badge">Boshqaruv</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="sidebar-nav">
+        <button type="button" class="nav-item active" data-tab="items">
+          <span class="nav-icon">🍢</span>
+          <span class="nav-text">Taomlar</span>
+          <span class="nav-count" id="count-items-badge">0</span>
+        </button>
+        <button type="button" class="nav-item" data-tab="categories">
+          <span class="nav-icon">📂</span>
+          <span class="nav-text">Kategoriyalar</span>
+          <span class="nav-count" id="count-cats-badge">0</span>
+        </button>
+        <button type="button" class="nav-item" data-tab="settings">
+          <span class="nav-icon">⚙️</span>
+          <span class="nav-text">Sozlamalar</span>
+        </button>
+        <button type="button" class="nav-item" data-tab="tools">
+          <span class="nav-icon">🛠️</span>
+          <span class="nav-text">Asboblar &amp; QR</span>
+        </button>
+      </nav>
+
+      <!-- Sidebar Footer -->
+      <div class="sidebar-footer">
+        <a href="../index.html" class="sidebar-link-public" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+            <polyline points="15 3 21 3 21 9"></polyline>
+            <line x1="10" y1="14" x2="21" y2="3"></line>
+          </svg>
+          <span>Menyuni ko'rish</span>
+        </a>
+        <div class="admin-user-info">
+          <span class="user-email" id="sidebar-user-email">admin@kebabo.uz</span>
+          <button type="button" class="btn-logout-sidebar" id="btn-logout-sidebar" title="Chiqish">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="app-main">
+      
+      <!-- Top Bar -->
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <div class="mobile-brand">
+            <div class="brand-logo-icon sm">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/>
+              </svg>
+            </div>
+            <span class="mobile-brand-title">KEBABO</span>
+          </div>
+
+          <!-- Connection Status Pill -->
+          <div class="status-pill" id="connection-status">
+            <span class="pulse-dot"></span>
+            <span id="connection-status-text">Yuklanmoqda...</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <!-- Light/Dark Mode Toggle -->
+          <button type="button" class="topbar-btn" id="btn-theme-toggle" title="Yorug'/Qorong'i rejim">
+            <span id="theme-icon">🌙</span>
+          </button>
+
+          <!-- Public Menu Quick Link -->
+          <a href="../index.html" class="topbar-btn-pill" target="_blank" rel="noopener">
+            <span>Menyu</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+
+          <!-- Logout Button (Mobile topbar) -->
+          <button type="button" class="topbar-btn mobile-only" id="btn-logout-mobile" title="Tizimdan chiqish">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Main Scrollable Content -->
+      <main class="content-viewport">
+        
+        <!-- ================================================================
+             TAB 1: TAOMLAR (MENU ITEMS)
+             ================================================================ -->
+        <section class="tab-pane active" id="pane-items">
+          <div class="pane-header">
+            <div>
+              <h1 class="pane-title">Taomlar ro'yxati</h1>
+              <p class="pane-desc">Barcha taomlarni boshqarish, narxlarni o'zgartirish va stop-list</p>
+            </div>
+            <button type="button" class="btn-primary" id="btn-add-item">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              <span>Yangi taom qo'shish</span>
+            </button>
+          </div>
+
+          <!-- Filter & Search Toolbar -->
+          <div class="toolbar-card">
+            <!-- Search Input -->
+            <div class="search-input-wrap">
+              <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input type="search" id="item-search" class="search-box" placeholder="Taom nomi, tavsifi yoki № raqami...">
+            </div>
+
+            <div class="filter-controls-row">
+              <!-- Category Filter -->
+              <select id="filter-category" class="filter-select">
+                <option value="all">Barcha kategoriyalar</option>
+                <!-- Filled dynamically -->
+              </select>
+
+              <!-- Status Filter -->
+              <select id="filter-status" class="filter-select">
+                <option value="all">Barcha holatlar</option>
+                <option value="available">Faqat mavjud taomlar</option>
+                <option value="unavailable">Mavjud emas (Stop-list)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Bulk Actions Bar (Appears when items are selected) -->
+          <div class="bulk-actions-bar" id="bulk-bar" hidden>
+            <div class="bulk-info">
+              <span class="bulk-count" id="bulk-selected-count">0 ta taom tanlandi</span>
+            </div>
+            <div class="bulk-buttons">
+              <button type="button" class="btn-sm btn-outline-success" id="btn-bulk-available">Mavjud qilish</button>
+              <button type="button" class="btn-sm btn-outline-warning" id="btn-bulk-unavailable">Stop-list ga olish</button>
+              <button type="button" class="btn-sm btn-outline-accent" id="btn-bulk-price">Narxni foizga o'zgartirish</button>
+              <button type="button" class="btn-sm btn-outline-danger" id="btn-bulk-delete">O'chirish</button>
+              <button type="button" class="btn-sm btn-secondary" id="btn-bulk-cancel">Bekor qilish</button>
+            </div>
+          </div>
+
+          <!-- Items Table / Card Container -->
+          <div class="items-container" id="items-container">
+            <div class="loading-state">
+              <div class="spinner"></div>
+              <p>Taomlar yuklanmoqda...</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             TAB 2: KATEGORIYALAR (CATEGORIES)
+             ================================================================ -->
+        <section class="tab-pane" id="pane-categories" hidden>
+          <div class="pane-header">
+            <div>
+              <h1 class="pane-title">Kategoriyalar</h1>
+              <p class="pane-desc">Menyu bo'limlarini qo'shish, tahrirlash va surib tartiblash</p>
+            </div>
+            <button type="button" class="btn-primary" id="btn-add-category">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              <span>Yangi kategoriya</span>
+            </button>
+          </div>
+
+          <div class="categories-list" id="categories-list">
+            <!-- Rendered dynamically -->
+          </div>
+        </section>
+
+        <!-- ================================================================
+             TAB 3: SOZLAMALAR (RESTAURANT SETTINGS)
+             ================================================================ -->
+        <section class="tab-pane" id="pane-settings" hidden>
+          <div class="pane-header">
+            <div>
+              <h1 class="pane-title">Restoran sozlamalari</h1>
+              <p class="pane-desc">Restoran ma'lumotlari, Wi-Fi, aloqa va mavzu ranglari</p>
+            </div>
+            <button type="button" class="btn-primary" id="btn-save-settings">
+              <span>Saqlash</span>
+            </button>
+          </div>
+
+          <form id="settings-form" class="settings-grid">
+            <!-- Card 1: Asosiy ma'lumotlar -->
+            <div class="settings-card">
+              <h3 class="settings-card-title">Asosiy ma'lumotlar</h3>
+              
+              <div class="form-group">
+                <label for="set-name" class="form-label">Restoran nomi</label>
+                <input type="text" id="set-name" class="form-input" required>
+              </div>
+
+              <div class="form-group">
+                <label for="set-brand-tagline" class="form-label">Logotip osti yozuvi</label>
+                <input type="text" id="set-brand-tagline" class="form-input" placeholder="masalan: marinade">
+              </div>
+
+              <div class="form-group">
+                <label for="set-tagline-uz" class="form-label">Shior (Tagline - O'zbekcha)</label>
+                <input type="text" id="set-tagline-uz" class="form-input">
+              </div>
+
+              <div class="form-group">
+                <label for="set-tagline-ru" class="form-label">Shior (Ruscha)</label>
+                <input type="text" id="set-tagline-ru" class="form-input">
+              </div>
+
+              <div class="form-group">
+                <label for="set-tagline-en" class="form-label">Shior (Inglizcha)</label>
+                <input type="text" id="set-tagline-en" class="form-input">
+              </div>
+            </div>
+
+            <!-- Card 2: Aloqa va Ish vaqti -->
+            <div class="settings-card">
+              <h3 class="settings-card-title">Aloqa va Ish vaqti</h3>
+
+              <div class="form-group">
+                <label for="set-phone-display" class="form-label">Telefon raqami (Ko'rinishi)</label>
+                <input type="text" id="set-phone-display" class="form-input" placeholder="+998 (71) 200-00-00">
+              </div>
+
+              <div class="form-group">
+                <label for="set-phone" class="form-label">Telefon (Qo'ng'iroq qilish uchun)</label>
+                <input type="text" id="set-phone" class="form-input" placeholder="+998712000000">
+              </div>
+
+              <div class="form-group">
+                <label for="set-address-uz" class="form-label">Manzil (O'zbekcha)</label>
+                <input type="text" id="set-address-uz" class="form-input">
+              </div>
+
+              <div class="form-group">
+                <label for="set-hours-uz" class="form-label">Ish vaqti</label>
+                <input type="text" id="set-hours-uz" class="form-input" placeholder="Har kuni: 10:00 - 23:00">
+              </div>
+            </div>
+
+            <!-- Card 3: Mehmonlar uchun Wi-Fi -->
+            <div class="settings-card">
+              <h3 class="settings-card-title">Mehmonlar uchun Wi-Fi</h3>
+
+              <div class="form-group">
+                <label for="set-wifi-ssid" class="form-label">Wi-Fi Tarmoq nomi (SSID)</label>
+                <input type="text" id="set-wifi-ssid" class="form-input" placeholder="KEBABO_Guest">
+              </div>
+
+              <div class="form-group">
+                <label for="set-wifi-password" class="form-label">Wi-Fi Paroli</label>
+                <input type="text" id="set-wifi-password" class="form-input" placeholder="kebabo2026">
+              </div>
+
+              <div class="form-group">
+                <label for="set-currency" class="form-label">Valyuta matni</label>
+                <input type="text" id="set-currency" class="form-input" value="so'm">
+              </div>
+            </div>
+
+            <!-- Card 4: Ijtimoiy tarmoqlar va Mavzu rangi -->
+            <div class="settings-card">
+              <h3 class="settings-card-title">Ijtimoiy tarmoqlar va Mavzu</h3>
+
+              <div class="form-group">
+                <label for="set-instagram" class="form-label">Instagram foydalanuvchi nomi</label>
+                <input type="text" id="set-instagram" class="form-input" placeholder="@kebabo_uz">
+              </div>
+
+              <div class="form-group">
+                <label for="set-telegram" class="form-label">Telegram bot / kanal</label>
+                <input type="text" id="set-telegram" class="form-input" placeholder="@kebabo_bot">
+              </div>
+
+              <!-- Theme Accent Color Picker -->
+              <div class="form-group">
+                <label class="form-label">Mavzu asosiy rangi (Accent Color)</label>
+                <div class="color-picker-row">
+                  <input type="color" id="set-accent-color" class="color-picker" value="#ff5722">
+                  <span class="color-val-text" id="color-val-text">#ff5722</span>
+                  <div class="color-preset-pills">
+                    <button type="button" class="color-preset" style="background:#ff5722;" data-color="#ff5722" title="Olovrang"></button>
+                    <button type="button" class="color-preset" style="background:#ff9800;" data-color="#ff9800" title="Qahrabo"></button>
+                    <button type="button" class="color-preset" style="background:#e53935;" data-color="#e53935" title="Qizil"></button>
+                    <button type="button" class="color-preset" style="background:#10b981;" data-color="#10b981" title="Zumrad"></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </section>
+
+        <!-- ================================================================
+             TAB 4: ASBOBLAR VA QR (TOOLS & BACKUP)
+             ================================================================ -->
+        <section class="tab-pane" id="pane-tools" hidden>
+          <div class="pane-header">
+            <div>
+              <h1 class="pane-title">Asboblar va QR Kod</h1>
+              <p class="pane-desc">Menyu statistikasi, QR kodni boshqarish va ma'lumotlar zaxirasi</p>
+            </div>
+          </div>
+
+          <!-- Stats Grid -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon">🍢</div>
+              <div class="stat-value" id="stat-total-items">0</div>
+              <div class="stat-label">Jami taomlar</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">📂</div>
+              <div class="stat-value" id="stat-total-cats">0</div>
+              <div class="stat-label">Kategoriyalar</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">⛔</div>
+              <div class="stat-value" id="stat-stop-list">0</div>
+              <div class="stat-label">Stop-list dagi taomlar</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">🕒</div>
+              <div class="stat-value sm" id="stat-last-update">Hozirgina</div>
+              <div class="stat-label">So'nggi yangilanish</div>
+            </div>
+          </div>
+
+          <!-- QR Code Management Card -->
+          <div class="tools-card">
+            <h3 class="tools-card-title">Stol QR Kodi boshqaruvi</h3>
+            <p class="tools-card-desc">Mehmonlar skanerlaydigan havola va QR kod rasmlari</p>
+
+            <div class="qr-tool-layout">
+              <div class="qr-preview-box">
+                <img src="../qr-code.svg" id="admin-qr-img" alt="QR Kod" class="qr-preview-image">
+              </div>
+              <div class="qr-tool-controls">
+                <div class="form-group">
+                  <label for="tool-menu-url" class="form-label">Menyu veb-manzili (URL)</label>
+                  <input type="url" id="tool-menu-url" class="form-input" placeholder="https://kebabhouse.uz/menu">
+                </div>
+
+                <div class="qr-btn-group">
+                  <button type="button" class="btn-secondary" id="btn-update-qr">QR Kodni yangilash</button>
+                  <a href="../qr-code.svg" download="kebabo-qr.svg" class="btn-secondary">SVG yuklab olish</a>
+                  <a href="../qr-code.png" download="kebabo-qr.png" class="btn-secondary">PNG yuklab olish</a>
+                  <a href="../qr-print.html" target="_blank" rel="noopener" class="btn-primary">
+                    <span>A5 Stol Kartasini Chop Etish (Print) ↗</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Backup & Restore Card -->
+          <div class="tools-card">
+            <h3 class="tools-card-title">Zaxiralash va Tiklash (JSON Backup)</h3>
+            <p class="tools-card-desc">Barcha taomlar va narxlarni bir faylda saqlab qo'yish yoki qayta tiklash</p>
+
+            <div class="backup-actions-grid">
+              <div class="backup-action-item">
+                <h4>Menyuni eksport qilish</h4>
+                <p>Hozirgi barcha menyu ma'lumotlarini <code>menu-backup.json</code> fayli sifatida kompyuteringizga yuklab oling.</p>
+                <button type="button" class="btn-primary" id="btn-export-json">JSON Eksport qilish</button>
+              </div>
+
+              <div class="backup-action-item">
+                <h4>JSON Fayldan tiklash</h4>
+                <p>Avval saqlab olingan JSON faylni tanlab bazaga tiklang.</p>
+                <label class="btn-secondary btn-file-label">
+                  <span>JSON Faylni tanlash</span>
+                  <input type="file" id="file-import-json" accept=".json" hidden>
+                </label>
+              </div>
+
+              <!-- One click migration of current menu.json -->
+              <div class="backup-action-item highlight">
+                <h4>Mavjud menu.json ni bazaga ko'chirish</h4>
+                <p>Loyihangizdagi tayyor 34 ta taomdan iborat <code>menu.json</code> ma'lumotlarini bitta bosishda Firebase bazasiga yuklang!</p>
+                <button type="button" class="btn-accent" id="btn-import-initial">Hozirgi menu.json ni import qilish</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- Bottom Tab Bar (Mobile Only) -->
+      <nav class="app-bottombar">
+        <button type="button" class="bottom-tab active" data-tab="items">
+          <span class="tab-icon">🍢</span>
+          <span class="tab-label">Taomlar</span>
+        </button>
+        <button type="button" class="bottom-tab" data-tab="categories">
+          <span class="tab-icon">📂</span>
+          <span class="tab-label">Kategoriyalar</span>
+        </button>
+        <button type="button" class="bottom-tab" data-tab="settings">
+          <span class="tab-icon">⚙️</span>
+          <span class="tab-label">Sozlamalar</span>
+        </button>
+        <button type="button" class="bottom-tab" data-tab="tools">
+          <span class="tab-icon">🛠️</span>
+          <span class="tab-label">Asboblar</span>
+        </button>
+      </nav>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================
+       MODALS
+       ======================================================================== -->
+
+  <!-- 1. Taom Qo'shish / Tahrirlash Modali -->
+  <div class="modal-backdrop" id="modal-item" hidden role="dialog" aria-modal="true">
+    <div class="modal-card lg">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-item-title">Yangi taom qo'shish</h2>
+        <button type="button" class="modal-close-icon" id="btn-close-item-modal">✕</button>
+      </div>
+
+      <form id="item-form" class="modal-body">
+        <input type="hidden" id="item-id">
+        <input type="hidden" id="item-category-id">
+
+        <!-- Multilingual Tabs for Name & Description -->
+        <div class="lang-tab-bar">
+          <button type="button" class="lang-tab-btn active" data-form-lang="uz">O'zbekcha (UZ)</button>
+          <button type="button" class="lang-tab-btn" data-form-lang="ru">Русский (RU)</button>
+          <button type="button" class="lang-tab-btn" data-form-lang="en">English (EN)</button>
+        </div>
+
+        <!-- UZ Fields -->
+        <div class="lang-fields-group active" data-lang-group="uz">
+          <div class="form-group">
+            <label for="item-name-uz" class="form-label">Taom nomi (UZ) *</label>
+            <input type="text" id="item-name-uz" class="form-input" placeholder="masalan: № 11 Dubayski qiyma" required>
+          </div>
+          <div class="form-group">
+            <label for="item-desc-uz" class="form-label">Tavsif (UZ)</label>
+            <textarea id="item-desc-uz" class="form-textarea" rows="2" placeholder="Taom haqida qisqacha ma'lumot..."></textarea>
+          </div>
+        </div>
+
+        <!-- RU Fields -->
+        <div class="lang-fields-group" data-lang-group="ru" hidden>
+          <div class="form-group">
+            <label for="item-name-ru" class="form-label">Название блюда (RU)</label>
+            <input type="text" id="item-name-ru" class="form-input" placeholder="например: № 11 Дубайский кебаб">
+          </div>
+          <div class="form-group">
+            <label for="item-desc-ru" class="form-label">Описание (RU)</label>
+            <textarea id="item-desc-ru" class="form-textarea" rows="2" placeholder="Краткое описание блюда..."></textarea>
+          </div>
+        </div>
+
+        <!-- EN Fields -->
+        <div class="lang-fields-group" data-lang-group="en" hidden>
+          <div class="form-group">
+            <label for="item-name-en" class="form-label">Dish Name (EN)</label>
+            <input type="text" id="item-name-en" class="form-input" placeholder="e.g.: № 11 Dubai Style Kebab">
+          </div>
+          <div class="form-group">
+            <label for="item-desc-en" class="form-label">Description (EN)</label>
+            <textarea id="item-desc-en" class="form-textarea" rows="2" placeholder="Short description..."></textarea>
+          </div>
+        </div>
+
+        <!-- Pricing, Weight & Category Row -->
+        <div class="form-row-3">
+          <div class="form-group">
+            <label for="item-price" class="form-label">Narxi (so'mda) *</label>
+            <input type="number" id="item-price" class="form-input" min="0" step="500" placeholder="18000" required>
+          </div>
+
+          <div class="form-group">
+            <label for="item-weight" class="form-label">Vazni / Porsiyasi</label>
+            <input type="text" id="item-weight" class="form-input" placeholder="180 g, 1 six">
+          </div>
+
+          <div class="form-group">
+            <div class="label-row">
+              <label for="item-category-select" class="form-label">Kategoriya *</label>
+              <button type="button" class="btn-link" id="btn-quick-add-cat">+ Yangi bo'lim</button>
+            </div>
+            <select id="item-category-select" class="form-select" required></select>
+          </div>
+        </div>
+
+        <!-- Badge & Availability Row -->
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="item-badge-select" class="form-label">Yorliq (Badge)</label>
+            <select id="item-badge-select" class="form-select">
+              <option value="">Yorliqsiz</option>
+              <option value="hit">⭐ Hit taom</option>
+              <option value="yangi">✨ Yangi</option>
+              <option value="achchiq">🔥 Achchiq</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Mavjudlik holati</label>
+            <div class="toggle-switch-wrap">
+              <label class="toggle-switch">
+                <input type="checkbox" id="item-available" checked>
+                <span class="toggle-slider"></span>
+              </label>
+              <span class="toggle-label" id="item-available-label">Mavjud (Sotuvda bor)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image Upload & Preview -->
+        <div class="form-group">
+          <label class="form-label">Taom rasmi</label>
+          <div class="image-upload-wrapper">
+            <div class="image-preview-container">
+              <img src="" id="item-img-preview" alt="Rasm ko'rinishi" class="preview-img" hidden>
+              <div class="no-image-placeholder" id="no-img-placeholder">
+                <span>Rasm tanlanmagan</span>
+              </div>
+            </div>
+
+            <div class="upload-inputs">
+              <div class="upload-buttons-row">
+                <label class="btn-upload-file">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                  </svg>
+                  <span>Qurilmadan rasm tanlash (Maks. 2MB)</span>
+                  <input type="file" id="item-file-input" accept="image/jpeg,image/png,image/webp" hidden>
+                </label>
+                <button type="button" class="btn-sm btn-secondary" id="btn-open-preset-gallery">
+                  🖼️ Tayyor sifatli fotosuratlar
+                </button>
+              </div>
+              <span class="upload-or">yoki tashqi rasm havolasi (URL):</span>
+              <input type="url" id="item-img-url" class="form-input sm" placeholder="https://images.unsplash.com/...">
+              
+              <!-- Client Compression Progress -->
+              <div class="progress-bar-wrap" id="img-progress-wrap" hidden>
+                <div class="progress-bar-fill" id="img-progress-bar"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" id="btn-cancel-item">Bekor qilish</button>
+          <button type="submit" class="btn-primary" id="btn-save-item">Saqlash</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 2. Kategoriya Qo'shish / Tahrirlash Modali -->
+  <div class="modal-backdrop" id="modal-category" hidden role="dialog" aria-modal="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-category-title">Yangi kategoriya</h2>
+        <button type="button" class="modal-close-icon" id="btn-close-cat-modal">✕</button>
+      </div>
+
+      <form id="category-form" class="modal-body">
+        <input type="hidden" id="category-id">
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="cat-icon" class="form-label">Emoji / Belgi *</label>
+            <input type="text" id="cat-icon" class="form-input" placeholder="🍢" maxlength="4" required>
+          </div>
+          <div class="form-group">
+            <label for="cat-name-uz" class="form-label">Nomi (UZ) *</label>
+            <input type="text" id="cat-name-uz" class="form-input" placeholder="Kebablar" required>
+          </div>
+        </div>
+
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="cat-name-ru" class="form-label">Nomi (RU)</label>
+            <input type="text" id="cat-name-ru" class="form-input" placeholder="Шашлыки">
+          </div>
+          <div class="form-group">
+            <label for="cat-name-en" class="form-label">Nomi (EN)</label>
+            <input type="text" id="cat-name-en" class="form-input" placeholder="Kebabs">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="cat-subtitle-uz" class="form-label">Izoh / Qisqacha tavsif (UZ)</label>
+          <input type="text" id="cat-subtitle-uz" class="form-input" placeholder="Sarxil go'shtlardan tayyorlangan tansiq kaboblar">
+        </div>
+
+        <div class="form-group">
+          <div class="toggle-switch-wrap">
+            <label class="toggle-switch">
+              <input type="checkbox" id="cat-visible" checked>
+              <span class="toggle-slider"></span>
+            </label>
+            <span class="toggle-label">Menyuda ko'rinsin (Faol)</span>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn-secondary" id="btn-cancel-cat">Bekor qilish</button>
+          <button type="submit" class="btn-primary" id="btn-save-cat">Saqlash</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 3. Tasdiqlash Modali (Confirm Modal) -->
+  <div class="modal-backdrop" id="modal-confirm" hidden role="dialog" aria-modal="true">
+    <div class="modal-card sm">
+      <div class="modal-body text-center">
+        <div class="confirm-icon" id="confirm-icon">⚠️</div>
+        <h3 class="confirm-title" id="confirm-title">Ishonchingiz komilmi?</h3>
+        <p class="confirm-desc" id="confirm-desc">Ushbu amalni ortga qaytarib bo'lmaydi.</p>
+        <div class="modal-actions-center">
+          <button type="button" class="btn-secondary" id="btn-confirm-cancel">Bekor qilish</button>
+          <button type="button" class="btn-danger" id="btn-confirm-ok">Ha, o'chirilsin</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. Narxni Foizga O'zgartirish Modali (Bulk Price Change) -->
+  <div class="modal-backdrop" id="modal-bulk-price" hidden role="dialog" aria-modal="true">
+    <div class="modal-card sm">
+      <div class="modal-header">
+        <h3 class="modal-title">Narxlarni ommaviy o'zgartirish</h3>
+        <button type="button" class="modal-close-icon" id="btn-close-bulk-price">✕</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">Tanlangan taomlarning narxini foiz hisobida oshiring yoki kamaytiring:</p>
+        
+        <div class="form-group">
+          <label class="form-label">O'zgarish foizi (%)</label>
+          <div class="price-percent-row">
+            <button type="button" class="btn-percent-preset" data-pct="-10">-10%</button>
+            <button type="button" class="btn-percent-preset" data-pct="-5">-5%</button>
+            <button type="button" class="btn-percent-preset active" data-pct="10">+10%</button>
+            <button type="button" class="btn-percent-preset" data-pct="15">+15%</button>
+          </div>
+          <input type="number" id="bulk-price-input" class="form-input" value="10" placeholder="10">
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-secondary" id="btn-cancel-bulk-price">Bekor qilish</button>
+          <button type="button" class="btn-primary" id="btn-apply-bulk-price">Qo'llash</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. Tayyor Taom Rasmlari Kutubxonasi Modali (Preset Food Gallery) -->
+  <div class="modal-backdrop" id="modal-preset-gallery" hidden role="dialog" aria-modal="true">
+    <div class="modal-card lg">
+      <div class="modal-header">
+        <h3 class="modal-title">Sifatli tayyor taom rasmlari</h3>
+        <button type="button" class="modal-close-icon" id="btn-close-gallery">✕</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-desc">O'zingizga mos taom rasmini bitta bosish orqali tanlang:</p>
+        
+        <!-- Category Filter Chips -->
+        <div class="filter-chips" id="gallery-category-chips" style="margin-bottom: 0.85rem;">
+          <button type="button" class="chip active" data-gallery-cat="all">Barchasi</button>
+          <button type="button" class="chip" data-gallery-cat="kebab">🍢 Shashliklar</button>
+          <button type="button" class="chip" data-gallery-cat="salad">🥗 Salatlar</button>
+          <button type="button" class="chip" data-gallery-cat="bread">🥖 Non &amp; Somsa</button>
+          <button type="button" class="chip" data-gallery-cat="drinks">🥤 Ichimliklar</button>
+          <button type="button" class="chip" data-gallery-cat="fastfood">🍔 Fast food</button>
+        </div>
+
+        <div class="preset-gallery-grid" id="preset-gallery-grid">
+          <!-- Dynamically populated from admin.js -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification with Undo Action -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Admin Script (ES Module) -->
+  <script type="module" src="admin.js"></script>
+</body>
+</html>

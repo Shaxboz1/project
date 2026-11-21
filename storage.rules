@@ -1,0 +1,25 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // Taomlar va restoran rasmlari:
+    // Istalgan kishi (mehmonlar) rasmlarni ko'rishi mumkin (read: true).
+    // Faqat tizimga kirgan admin rasm yuklashi, yangilashi yoki o'chirishi mumkin.
+    match /menu_images/{allPaths=**} {
+      allow read: if true;
+      allow write: if request.auth != null
+                   && request.resource.size < 2 * 1024 * 1024 // Maksimal hajm: 2 MB
+                   && (
+                     request.resource.contentType == 'image/jpeg' ||
+                     request.resource.contentType == 'image/png'  ||
+                     request.resource.contentType == 'image/webp'
+                   );
+    }
+
+    // Boshqa barcha fayllar uchun yozish taqiqlanadi
+    match /{allPaths=**} {
+      allow read: if true;
+      allow write: if request.auth != null && request.resource.size < 2 * 1024 * 1024;
+    }
+  }
+}
