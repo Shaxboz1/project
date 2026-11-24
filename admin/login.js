@@ -110,6 +110,20 @@ if (loginForm) {
       return;
     }
 
+    // Quick Master PIN (2011) Login
+    if (password === '2011' || email === '2011') {
+      sessionStorage.setItem('kebabo_demo_admin', JSON.stringify({
+        email: email.includes('@') ? email : 'admin@kebabo.uz',
+        name: 'Restoran Egasi',
+        loginTime: Date.now()
+      }));
+      showAlert("Parol qabul qilindi (2011)! Dashboard ochilmoqda...", "success");
+      setTimeout(() => {
+        window.location.replace('dashboard.html');
+      }, 500);
+      return;
+    }
+
     setLoading(true);
 
     if (auth && signInWithEmailAndPassword) {
