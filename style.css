@@ -645,6 +645,17 @@ body {
   }
 }
 
+@keyframes cardFadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
 /* Dish Card */
 .dish-card {
   position: relative;
@@ -659,10 +670,14 @@ body {
   box-shadow: var(--shadow-card);
   touch-action: manipulation;
   -webkit-tap-highlight-color: transparent;
+  animation: cardFadeInUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 .dish-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px);
+  border-color: var(--gold-hairline);
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.6), 0 0 20px var(--gold-glow);
+}
   border-color: var(--border-active);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45), 0 0 15px rgba(255, 87, 34, 0.2);
 }
@@ -1545,12 +1560,12 @@ body {
   position: relative;
   width: 100%;
   max-width: 420px;
-  background: linear-gradient(180deg, #181820 0%, #121217 100%);
-  border: 1px solid rgba(255, 87, 34, 0.35);
+  background: linear-gradient(180deg, #14111a 0%, #08070b 100%);
+  border: 1px solid var(--gold-hairline);
   border-radius: var(--radius-xl);
   padding: 1.85rem 1.4rem;
   text-align: center;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.8), 0 0 40px rgba(255, 87, 34, 0.2);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9), 0 0 40px var(--gold-glow);
   animation: welcomePop 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -1580,6 +1595,7 @@ body {
 .welcome-close-btn:hover {
   background: rgba(255, 255, 255, 0.18);
   color: #fff;
+  border-color: var(--gold-hairline);
 }
 
 .welcome-brand {
@@ -1591,12 +1607,12 @@ body {
   height: 50px;
   margin: 0 auto 0.55rem;
   border-radius: 14px;
-  background: var(--grad-fire);
+  background: var(--gold-gradient);
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 24px var(--fire-glow);
-  color: #fff;
+  box-shadow: 0 8px 24px var(--gold-glow);
+  color: #070709;
 }
 
 .welcome-flame-icon svg {
@@ -1616,7 +1632,7 @@ body {
 
 .welcome-sub {
   font-size: 0.84rem;
-  color: var(--fire-amber);
+  color: var(--gold-light);
   margin-top: 0.25rem;
   font-weight: 600;
   letter-spacing: 0.3px;
@@ -1647,8 +1663,9 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  background: rgba(255, 87, 34, 0.1);
-  color: var(--fire-orange);
+  background: rgba(212, 175, 55, 0.15);
+  color: var(--gold-light);
+  border: 1px solid var(--gold-hairline);
   font-size: 0.78rem;
   font-weight: 700;
   padding: 0.3rem 0.75rem;
@@ -1671,7 +1688,7 @@ body {
   gap: 0.4rem;
   font-size: 0.76rem;
   background: rgba(255, 255, 255, 0.05);
-  border: 1px dashed rgba(255, 255, 255, 0.15);
+  border: 1px dashed var(--gold-hairline);
   padding: 0.5rem 0.8rem;
   border-radius: var(--radius-md);
   color: var(--text-secondary);
@@ -1688,12 +1705,13 @@ body {
 
 .btn-enter-menu {
   width: 100%;
-  background: var(--grad-fire);
-  color: #ffffff;
+  background: var(--gold-gradient);
+  color: #070709;
   border: none;
   font-family: var(--font-heading);
   font-size: 1.12rem;
-  font-weight: 700;
+  font-weight: 800;
+  letter-spacing: 0.04em;
   padding: 0.95rem 1.5rem;
   border-radius: var(--radius-pill);
   cursor: pointer;
@@ -1701,13 +1719,13 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.65rem;
-  box-shadow: 0 8px 24px var(--fire-glow);
+  box-shadow: 0 8px 24px var(--gold-glow);
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .btn-enter-menu:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(255, 87, 34, 0.5);
+  box-shadow: 0 12px 30px rgba(212, 175, 55, 0.5);
 }
 
 .btn-enter-menu:active {
