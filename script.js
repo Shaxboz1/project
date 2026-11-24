@@ -12,7 +12,8 @@
     currentLang: localStorage.getItem('kebab_menu_lang') || 'uz',
     activeFilter: 'all',
     searchQuery: '',
-    activeCategoryId: null
+    activeCategoryId: null,
+    tableTray: JSON.parse(sessionStorage.getItem('kebabo_table_tray') || '{}')
   };
 
   // DOM Elements
@@ -298,15 +299,18 @@
     applyRestaurantInfo();
     setupLanguageSwitcher();
     setupWelcomeQRScreen();
+    setupTrayEvents();
     setupSearchAndFilters();
     setupBackToTop();
     setupModalEvents();
     setupWifiCopy();
     setupSecretAdminAccess();
 
-    // Render Menu & Categories
+    // Render Menu, Showcase & Categories
     renderCategoryTabs();
+    renderChefsShowcase();
     renderMenu();
+    updateTrayUI();
     updateUITranslations();
     setupScrollSpy();
   }
@@ -683,6 +687,9 @@
       badgeHtml = `<span class="badge ${badgeClass}">${badgeIcon} ${badgeLabel}</span>`;
     }
 
+    const numberTag = item.item_num ? `<span class="card-number-badge">№ ${item.item_num}</span>` : '';
+    const addBtnLabel = state.currentLang === 'ru' ? '+ Добавить' : (state.currentLang === 'en' ? '+ Add' : '+ Qo\'shish');
+
     card.innerHTML = `
       <div class="card-image-wrap">
         <img 
@@ -694,6 +701,7 @@
           onerror="this.src='https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=700&q=80'"
         >
         <div class="card-overlay"></div>
+        ${numberTag}
         ${badgeHtml ? `<div class="card-badge-top-left">${badgeHtml}</div>` : ''}
         ${item.weight ? `<span class="card-weight-pill">${item.weight}</span>` : ''}
       </div>
@@ -705,27 +713,318 @@
           <div class="dish-price-wrap">
             <span class="dish-price">${formatPrice(item.price)}</span>
           </div>
-          <span class="btn-card-view">
-            <span>${txt.btn_view}</span>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12">
-              <polyline points="9 18 15 12 9 6"></polyline>
-            </svg>
-          </span>
+          <div class="card-actions-row">
+            ${isAvailable ? `
+              <button type="button" class="btn-card-add" data-dish-id="${item.id}" aria-label="Stolga qo'shish" title="Stol hisob-kitobiga qo'shish">
+                <span>${addBtnLabel}</span>
+              </button>
+            ` : ''}
+            <button type="button" class="btn-card-view-icon" aria-label="Batafsil">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="16" x2="12" y2="12"></line>
+                <line x1="12" y1="8" x2="12.01" y2="8"></line>
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     `;
 
-    // Open detail modal on click or Enter key
-    const openHandler = () => openDishModal(item);
-    card.addEventListener('click', openHandler);
+    card.addEventListener('click', (e) => {
+      const addBtn = e.target.closest('.btn-card-add');
+      if (addBtn) {
+        e.stopPropagation();
+        addToTray(item.id, item);
+      } else {
+        openDishModal(item);
+      }
+    });
+
     card.addEventListener('keydown', (e) => {
       if (e.key === 'Enter' || e.key === ' ') {
         e.preventDefault();
-        openHandler();
+        openDishModal(item);
       }
     });
 
     return card;
+  }
+
+  // ============================================================================
+  // TABLE BILL TRAY MANAGEMENT (Mening stolim hisob-kitobi)
+  // ============================================================================
+  function addToTray(dishId, dishObj) {
+    if (!state.tableTray) state.tableTray = {};
+    if (state.tableTray[dishId]) {
+      state.tableTray[dishId].count++;
+    } else {
+      state.tableTray[dishId] = {
+        item: dishObj,
+        count: 1
+      };
+    }
+    sessionStorage.setItem('kebabo_table_tray', JSON.stringify(state.tableTray));
+    updateTrayUI();
+    showToast(`"${t(dishObj.name)}" stol hisobiga qo'shildi! 🧾`);
+    if ('vibrate' in navigator) navigator.vibrate(35);
+  }
+
+  function removeFromTray(dishId) {
+    if (!state.tableTray || !state.tableTray[dishId]) return;
+    state.tableTray[dishId].count--;
+    if (state.tableTray[dishId].count <= 0) {
+      delete state.tableTray[dishId];
+    }
+    sessionStorage.setItem('kebabo_table_tray', JSON.stringify(state.tableTray));
+    updateTrayUI();
+  }
+
+  function clearTray() {
+    state.tableTray = {};
+    sessionStorage.removeItem('kebabo_table_tray');
+    updateTrayUI();
+    showToast("Stol hisobi tozalandi.");
+  }
+
+  function updateTrayUI() {
+    const tray = state.tableTray || {};
+    const keys = Object.keys(tray);
+    let totalCount = 0;
+    let subtotal = 0;
+
+    keys.forEach(id => {
+      const entry = tray[id];
+      totalCount += entry.count;
+      subtotal += (entry.item.price || 0) * entry.count;
+    });
+
+    const floatingTray = document.getElementById('floating-table-tray');
+    const trayPillCount = document.getElementById('tray-pill-count');
+    const trayPillTotal = document.getElementById('tray-pill-total');
+    const headerBadge = document.getElementById('tray-counter-badge');
+
+    // Update floating bar
+    if (floatingTray) {
+      floatingTray.hidden = (totalCount === 0);
+    }
+    if (trayPillCount) trayPillCount.textContent = totalCount;
+    if (trayPillTotal) trayPillTotal.textContent = formatPrice(subtotal);
+
+    // Update header badge
+    if (headerBadge) {
+      headerBadge.textContent = totalCount;
+      headerBadge.hidden = (totalCount === 0);
+    }
+
+    // Update modal elements
+    const emptyBox = document.getElementById('tray-empty-box');
+    const itemsList = document.getElementById('tray-items-list');
+    const summaryBox = document.getElementById('tray-summary-box');
+    const actionsBox = document.getElementById('tray-actions');
+    const itemsCountText = document.getElementById('tray-items-count-text');
+    const subtotalVal = document.getElementById('tray-subtotal-val');
+    const grandTotalVal = document.getElementById('tray-grand-total');
+
+    if (emptyBox) emptyBox.hidden = (totalCount > 0);
+    if (itemsList) itemsList.hidden = (totalCount === 0);
+    if (summaryBox) summaryBox.hidden = (totalCount === 0);
+    if (actionsBox) actionsBox.hidden = (totalCount === 0);
+
+    if (itemsCountText) itemsCountText.textContent = `${totalCount} ta`;
+    if (subtotalVal) subtotalVal.textContent = formatPrice(subtotal);
+    if (grandTotalVal) grandTotalVal.textContent = formatPrice(subtotal);
+
+    if (itemsList && totalCount > 0) {
+      itemsList.innerHTML = '';
+      keys.forEach(id => {
+        const entry = tray[id];
+        const item = entry.item;
+        const row = document.createElement('div');
+        row.className = 'tray-item-row';
+        row.innerHTML = `
+          <img src="${item.image}" alt="${t(item.name)}" class="tray-item-thumb">
+          <div class="tray-item-details">
+            <h4 class="tray-item-name">${t(item.name)}</h4>
+            <span class="tray-item-unit-price">${formatPrice(item.price)} &times; ${entry.count} = ${formatPrice(item.price * entry.count)}</span>
+          </div>
+          <div class="tray-stepper">
+            <button type="button" class="btn-step btn-minus" data-id="${id}" aria-label="Kamaytirish">-</button>
+            <span class="tray-item-count-val">${entry.count}</span>
+            <button type="button" class="btn-step btn-plus" data-id="${id}" aria-label="Ko'paytirish">+</button>
+          </div>
+        `;
+        itemsList.appendChild(row);
+      });
+    }
+  }
+
+  function setupTrayEvents() {
+    const floatingTray = document.getElementById('floating-table-tray');
+    const btnOpenTray = document.getElementById('btn-open-tray');
+    const btnOpenArea = document.getElementById('btn-open-tray-area');
+    const btnHeaderTray = document.getElementById('btn-tray-header');
+    const trayModal = document.getElementById('tray-modal');
+    const btnCloseTray = document.getElementById('btn-close-tray');
+    const btnClearTray = document.getElementById('btn-clear-tray');
+    const btnWaiterView = document.getElementById('btn-waiter-view');
+    const waiterModal = document.getElementById('waiter-modal');
+    const btnCloseWaiter = document.getElementById('btn-close-waiter');
+    const btnWaiterDone = document.getElementById('btn-waiter-done');
+    const tableNumInput = document.getElementById('table-num-input');
+    const itemsList = document.getElementById('tray-items-list');
+
+    const openTray = () => {
+      if (trayModal) {
+        trayModal.hidden = false;
+        updateTrayUI();
+      }
+    };
+
+    const closeTray = () => {
+      if (trayModal) trayModal.hidden = true;
+    };
+
+    if (btnOpenTray) btnOpenTray.addEventListener('click', openTray);
+    if (btnOpenArea) btnOpenArea.addEventListener('click', openTray);
+    if (btnHeaderTray) btnHeaderTray.addEventListener('click', openTray);
+    if (btnCloseTray) btnCloseTray.addEventListener('click', closeTray);
+
+    if (trayModal) {
+      trayModal.addEventListener('click', (e) => {
+        if (e.target === trayModal) closeTray();
+      });
+    }
+
+    if (btnClearTray) {
+      btnClearTray.addEventListener('click', () => {
+        if (confirm("Rostdan ham stol hisobini tozalashni xohlaysizmi?")) {
+          clearTray();
+        }
+      });
+    }
+
+    // Steppers inside tray modal
+    if (itemsList) {
+      itemsList.addEventListener('click', (e) => {
+        const btnPlus = e.target.closest('.btn-plus');
+        const btnMinus = e.target.closest('.btn-minus');
+        if (btnPlus) {
+          const id = btnPlus.dataset.id;
+          if (state.tableTray[id]) {
+            addToTray(id, state.tableTray[id].item);
+          }
+        } else if (btnMinus) {
+          const id = btnMinus.dataset.id;
+          removeFromTray(id);
+        }
+      });
+    }
+
+    // Table number persistence
+    if (tableNumInput) {
+      const savedTable = sessionStorage.getItem('kebabo_table_number') || '1';
+      tableNumInput.value = savedTable;
+      tableNumInput.addEventListener('input', (e) => {
+        sessionStorage.setItem('kebabo_table_number', e.target.value);
+      });
+    }
+
+    // Waiter Quick Receipt view
+    if (btnWaiterView) {
+      btnWaiterView.addEventListener('click', () => {
+        if (trayModal) trayModal.hidden = true;
+        if (waiterModal) {
+          const waiterTableTitle = document.getElementById('waiter-table-title');
+          const waiterList = document.getElementById('waiter-items-list');
+          const waiterTotalVal = document.getElementById('waiter-total-val');
+          const tableNum = tableNumInput?.value || '1';
+
+          if (waiterTableTitle) waiterTableTitle.textContent = `Stol № ${tableNum}`;
+
+          if (waiterList) {
+            waiterList.innerHTML = '';
+            let total = 0;
+            const tray = state.tableTray || {};
+            Object.keys(tray).forEach(id => {
+              const entry = tray[id];
+              total += entry.item.price * entry.count;
+              const line = document.createElement('div');
+              line.className = 'waiter-item-line';
+              line.innerHTML = `
+                <span><span class="item-qty">${entry.count}x</span> ${t(entry.item.name)}</span>
+                <strong>${formatPrice(entry.item.price * entry.count)}</strong>
+              `;
+              waiterList.appendChild(line);
+            });
+            if (waiterTotalVal) waiterTotalVal.textContent = formatPrice(total);
+          }
+
+          waiterModal.hidden = false;
+        }
+      });
+    }
+
+    if (btnCloseWaiter) btnCloseWaiter.addEventListener('click', () => { if (waiterModal) waiterModal.hidden = true; });
+    if (btnWaiterDone) btnWaiterDone.addEventListener('click', () => { if (waiterModal) waiterModal.hidden = true; });
+  }
+
+  // ============================================================================
+  // CHEF'S SPECIALS SHOWCASE (Oshpaz durdonalari)
+  // ============================================================================
+  function renderChefsShowcase() {
+    const container = document.getElementById('chefs-showcase-carousel');
+    if (!container || !state.menuData?.categories) return;
+
+    container.innerHTML = '';
+
+    // Collect all kebabs
+    let allKebabs = [];
+    state.menuData.categories.forEach(c => {
+      if (c.items) allKebabs.push(...c.items);
+    });
+
+    // Select featured signature skewers
+    const signatureNums = ['11', '36', '29', '28', '15', '18'];
+    let specials = allKebabs.filter(k => signatureNums.includes(String(k.item_num)));
+    if (specials.length === 0) {
+      specials = allKebabs.slice(0, 5);
+    }
+
+    const addLabel = state.currentLang === 'ru' ? '+ Добавить' : (state.currentLang === 'en' ? '+ Add' : '+ Qo\'shish');
+
+    specials.forEach(dish => {
+      const card = document.createElement('div');
+      card.className = 'showcase-card';
+      card.innerHTML = `
+        <div class="showcase-img-wrap">
+          <img src="${dish.image}" alt="${t(dish.name)}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=700&q=80'">
+          <div class="showcase-crown-tag">👑 № ${dish.item_num || 'Hit'}</div>
+        </div>
+        <div class="showcase-body">
+          <h3 class="showcase-item-title">${t(dish.name)}</h3>
+          <span class="showcase-weight">${dish.weight || '1 six • 180g'}</span>
+          <div class="showcase-bottom-row">
+            <span class="showcase-price">${formatPrice(dish.price)}</span>
+            <button type="button" class="btn-showcase-add" data-showcase-id="${dish.id}">
+              ${addLabel}
+            </button>
+          </div>
+        </div>
+      `;
+
+      card.addEventListener('click', (e) => {
+        const btn = e.target.closest('.btn-showcase-add');
+        if (btn) {
+          e.stopPropagation();
+          addToTray(dish.id, dish);
+        } else {
+          openDishModal(dish);
+        }
+      });
+
+      container.appendChild(card);
+    });
   }
 
   /**
@@ -776,6 +1075,18 @@
       elements.modalOrderTip.textContent = txt.order_tip;
     }
 
+    const modalAddBtn = document.getElementById('modal-add-to-tray-btn');
+    if (modalAddBtn) {
+      if (item.is_available === false) {
+        modalAddBtn.style.display = 'none';
+      } else {
+        modalAddBtn.style.display = 'inline-flex';
+        modalAddBtn.textContent = state.currentLang === 'ru' 
+          ? '+ В стол' 
+          : (state.currentLang === 'en' ? '+ Add to table' : '+ Stolga qo\'shish');
+      }
+    }
+
     elements.dishModal.hidden = false;
     // Allow paint then trigger CSS transition
     requestAnimationFrame(() => {
@@ -796,6 +1107,16 @@
   function setupModalEvents() {
     elements.modalCloseBtn.addEventListener('click', closeDishModal);
     elements.modalCloseAction.addEventListener('click', closeDishModal);
+
+    const modalAddBtn = document.getElementById('modal-add-to-tray-btn');
+    if (modalAddBtn) {
+      modalAddBtn.addEventListener('click', () => {
+        if (state.activeModalDish && state.activeModalDish.is_available !== false) {
+          addToTray(state.activeModalDish.id, state.activeModalDish);
+          closeDishModal();
+        }
+      });
+    }
 
     elements.dishModal.addEventListener('click', (e) => {
       if (e.target === elements.dishModal) {

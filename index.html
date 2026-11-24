@@ -7,10 +7,10 @@
   <meta name="description" content="KEBABO marinade - Sarxil go'shtlar, maxsus marinadlar va tansiq kaboblar raqamli menyusi.">
   <title>KEBABO | Raqamli Menyu</title>
 
-  <!-- Google Fonts: Outfit (Headings) & Plus Jakarta Sans (Body) -->
+  <!-- Google Fonts: Cinzel (Majestic Headings), Marcellus & Plus Jakarta Sans (Body) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800;900&family=Marcellus&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css">
   <link rel="icon" type="image/svg+xml" href="qr-code.svg">
@@ -79,14 +79,21 @@
         </div>
         <div class="brand-text">
           <span class="brand-name" id="nav-brand-name">KEBABO</span>
-          <span class="brand-sub">marinade</span>
+          <span class="brand-sub">ROYAL MARINADE</span>
         </div>
       </div>
 
       <div class="header-actions">
+        <!-- Table Tray Button -->
+        <button type="button" class="btn-tray-header" id="btn-tray-header" aria-label="Mening stolim" title="Mening stolim hisob-kitobi">
+          <span class="btn-tray-icon">🧾</span>
+          <span class="btn-tray-text">Hisob</span>
+          <span class="tray-counter-badge" id="tray-counter-badge" hidden>0</span>
+        </button>
+
         <!-- QR Code Button -->
         <button type="button" class="btn-show-qr" id="btn-show-qr" aria-label="Stol QR kodi" title="Stol QR kodi">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15">
             <rect x="3" y="3" width="7" height="7"></rect>
             <rect x="14" y="3" width="7" height="7"></rect>
             <rect x="14" y="14" width="7" height="7"></rect>
@@ -110,32 +117,55 @@
     <div class="container hero-content">
       <div class="hero-badge">
         <span class="pulse-dot"></span>
-        <span id="hero-status">Ochiq &bull; 10:00 - 23:00</span>
+        <span id="hero-status">✦ Ochiq • 10:00 - 23:00 ✦</span>
       </div>
 
       <h1 class="hero-title">
         <span id="hero-title-main">KEBABO</span>
-        <span class="hero-title-accent" id="hero-tagline">marinade</span>
+        <span class="hero-title-accent" id="hero-tagline">marinade & grill</span>
       </h1>
 
       <p class="hero-desc" id="hero-desc">
-        Sarxil go'shtlar, maxsus marinadlar va haqiqiy cho'g'da pishirilgan tansiq kaboblar maskani.
+        Sarxil go'shtlar, maxsus sirli marinadlar va haqiqiy eman cho'g'ida pishirilgan shohona tansiq kaboblar maskani.
       </p>
 
       <!-- Highlights row -->
       <div class="hero-features">
         <div class="feature-item">
           <span class="feature-icon">🍢</span>
-          <span class="feature-text" id="feat-halal">100% Halol go'sht</span>
+          <span class="feature-text" id="feat-skewers">27 xil asl kabob</span>
         </div>
         <div class="feature-item">
           <span class="feature-icon">🔥</span>
-          <span class="feature-text" id="feat-charcoal">Cho'g'da pishirilgan</span>
+          <span class="feature-text" id="feat-charcoal">Eman cho'g'ida</span>
         </div>
         <div class="feature-item">
           <span class="feature-icon">⚡</span>
-          <span class="feature-text" id="feat-speed">Tezkor xizmat</span>
+          <span class="feature-text" id="feat-speed">Tezkor stol xizmati</span>
         </div>
+        <div class="feature-item">
+          <span class="feature-icon">🥩</span>
+          <span class="feature-text" id="feat-halal">100% Halol go'sht</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chef's Specials / Oshpaz Tavsiyasi Showcase -->
+  <section class="chefs-showcase-section" id="chefs-showcase-section">
+    <div class="container">
+      <div class="showcase-header">
+        <div class="showcase-gold-badge">
+          <span class="gold-sparkle">✦</span>
+          <span id="showcase-badge-text">OSHPAZ TAVSIYASI</span>
+          <span class="gold-sparkle">✦</span>
+        </div>
+        <h2 class="showcase-title" id="showcase-title-text">Eng Sara va Xaridorgir Kaboblar</h2>
+        <p class="showcase-desc" id="showcase-desc-text">KEBABO ustalarining maxsus sirli marinadida tayyorlangan tansiq taomlar</p>
+      </div>
+
+      <div class="chefs-showcase-carousel" id="chefs-showcase-carousel">
+        <!-- Dynamically injected via script.js -->
       </div>
     </div>
   </section>
@@ -229,7 +259,12 @@
             <span class="modal-price-label" id="modal-price-label">Narxi:</span>
             <span class="modal-price-val" id="modal-price"></span>
           </div>
-          <button type="button" class="modal-action-btn" id="modal-close-action">Yopish</button>
+          <div class="modal-actions-right">
+            <button type="button" class="modal-add-tray-btn" id="modal-add-to-tray-btn">
+              <span>+ Stolga qo'shish</span>
+            </button>
+            <button type="button" class="modal-action-btn" id="modal-close-action">Yopish</button>
+          </div>
         </div>
 
         <div class="modal-order-hint">
@@ -237,6 +272,113 @@
           <span id="modal-order-tip">Buyurtma berish uchun stolingizga ofitsiantni taklif qiling.</span>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- Floating Table Tray Bar (Mening stolim hisobi) -->
+  <aside class="floating-table-tray" id="floating-table-tray" aria-label="Mening stolim hisobi" hidden>
+    <div class="tray-pill-inner">
+      <div class="tray-pill-left" id="btn-open-tray-area" role="button" tabindex="0">
+        <div class="tray-pill-icon-wrap">
+          <span class="tray-pill-icon">🧾</span>
+          <span class="tray-pill-count" id="tray-pill-count">0</span>
+        </div>
+        <div class="tray-pill-info">
+          <span class="tray-pill-title" id="tray-pill-title">Mening stolim</span>
+          <span class="tray-pill-total" id="tray-pill-total">0 so'm</span>
+        </div>
+      </div>
+      <button type="button" class="btn-open-tray" id="btn-open-tray">
+        <span id="btn-open-tray-text">Hisob-kitob</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16">
+          <polyline points="9 18 15 12 9 6"></polyline>
+        </svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Table Bill Tray Modal (Bottom Sheet on Mobile) -->
+  <div class="modal-backdrop" id="tray-modal" role="dialog" aria-modal="true" aria-hidden="true" hidden>
+    <div class="modal-card tray-modal-card">
+      <div class="tray-modal-header">
+        <div class="tray-header-title-box">
+          <span class="tray-gold-icon">🧾</span>
+          <div>
+            <h3 class="tray-modal-title" id="tray-modal-title">Stol Hisob-Kitobi</h3>
+            <p class="tray-modal-subtitle" id="tray-modal-subtitle">Tanlangan taomlaringiz va jami summa</p>
+          </div>
+        </div>
+        <button type="button" class="modal-close" id="btn-close-tray" aria-label="Yopish">✕</button>
+      </div>
+
+      <!-- Table Number Row -->
+      <div class="table-number-row">
+        <div class="table-num-field">
+          <label for="table-num-input" class="table-num-label" id="table-num-label">Stol raqami:</label>
+          <input type="number" id="table-num-input" class="table-num-input" placeholder="№" min="1" max="99" value="1">
+        </div>
+        <span class="table-hint" id="table-hint-text">Ofitsiant buyurtmani aniq topishi uchun</span>
+      </div>
+
+      <!-- Empty Tray Message -->
+      <div class="tray-empty-box" id="tray-empty-box">
+        <span class="tray-empty-icon">🍢</span>
+        <p class="tray-empty-title" id="tray-empty-title">Stolingiz hali bo'sh</p>
+        <p class="tray-empty-desc" id="tray-empty-desc">Menyudan taomlar yonidagi "+ Qo'shish" tugmasini bosing</p>
+      </div>
+
+      <!-- Tray Items List -->
+      <div class="tray-items-list" id="tray-items-list" hidden>
+        <!-- Injected via script.js -->
+      </div>
+
+      <!-- Tray Summary Box -->
+      <div class="tray-summary-box" id="tray-summary-box" hidden>
+        <div class="tray-sum-row">
+          <span id="tray-sum-label">Taomlar soni:</span>
+          <strong id="tray-items-count-text">0 ta</strong>
+        </div>
+        <div class="tray-sum-row">
+          <span id="tray-subtotal-label">Taomlar summasi:</span>
+          <strong id="tray-subtotal-val">0 so'm</strong>
+        </div>
+        <div class="tray-sum-row total-highlight">
+          <span id="tray-total-label">Jami to'lov:</span>
+          <strong class="total-gold-price" id="tray-grand-total">0 so'm</strong>
+        </div>
+      </div>
+
+      <!-- Tray Actions -->
+      <div class="tray-actions" id="tray-actions" hidden>
+        <button type="button" class="btn-waiter-view" id="btn-waiter-view">
+          <span id="btn-waiter-view-text">🛎️ Ofitsiantga ko'rsatish</span>
+        </button>
+        <button type="button" class="btn-clear-tray" id="btn-clear-tray" title="Barchasini tozalash">
+          <span id="btn-clear-tray-text">🗑️ Tozalash</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Waiter Quick Check Modal (High-contrast clean summary for the waiter) -->
+  <div class="modal-backdrop" id="waiter-modal" role="dialog" aria-modal="true" aria-hidden="true" hidden>
+    <div class="modal-card waiter-modal-card">
+      <div class="waiter-modal-header">
+        <div>
+          <span class="waiter-badge">STOL BUYURTMASI</span>
+          <h3 class="waiter-table-title" id="waiter-table-title">Stol № 1</h3>
+        </div>
+        <button type="button" class="modal-close" id="btn-close-waiter" aria-label="Yopish">✕</button>
+      </div>
+      <p class="waiter-tip-text">Ushbu ekranni ofitsiantga ko'rsating:</p>
+      <div class="waiter-items-list" id="waiter-items-list">
+        <!-- Injected via script.js -->
+      </div>
+      <div class="waiter-total-row">
+        <span>Jami summa:</span>
+        <strong id="waiter-total-val">0 so'm</strong>
+      </div>
+      <button type="button" class="btn-primary-gold" id="btn-waiter-done">✓ Tushunarli</button>
     </div>
   </div>
 
